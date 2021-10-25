@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.iata.cargo.Vocabulary;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,6 +44,7 @@ public class CompanyBranch
     protected String description;
     @Types
     @JsonProperty("@type")
+    @ApiModelProperty(allowableValues = Vocabulary.s_c_CompanyBranch)
     protected Set<String> types;
     @Properties
     @JsonIgnore
@@ -66,7 +68,7 @@ public class CompanyBranch
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
     @JsonProperty(Vocabulary.s_p_contactPersons)
-    protected Person contactPersons;
+    protected Set<Person> contactPersons;
     /**
      * Location and address details
      * 
@@ -86,7 +88,7 @@ public class CompanyBranch
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
     @JsonProperty(Vocabulary.s_p_otherIdentifiers)
-    protected OtherIdentifier otherIdentifiers;
+    protected Set<OtherIdentifier> otherIdentifiers;
     /**
      * Company branch name
      * 
@@ -161,11 +163,11 @@ public class CompanyBranch
         return company;
     }
 
-    public void setContactPersons(Person contactPersons) {
+    public void setContactPersons(Set<Person> contactPersons) {
         this.contactPersons = contactPersons;
     }
 
-    public Person getContactPersons() {
+    public Set<Person> getContactPersons() {
         return contactPersons;
     }
 
@@ -177,11 +179,11 @@ public class CompanyBranch
         return location;
     }
 
-    public void setOtherIdentifiers(OtherIdentifier otherIdentifiers) {
+    public void setOtherIdentifiers(Set<OtherIdentifier> otherIdentifiers) {
         this.otherIdentifiers = otherIdentifiers;
     }
 
-    public OtherIdentifier getOtherIdentifiers() {
+    public Set<OtherIdentifier> getOtherIdentifiers() {
         return otherIdentifiers;
     }
 

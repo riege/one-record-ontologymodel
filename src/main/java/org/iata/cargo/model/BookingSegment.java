@@ -43,6 +43,7 @@ public class BookingSegment
     protected String description;
     @Types
     @JsonProperty("@type")
+    @ApiModelProperty(allowableValues = Vocabulary.s_c_BookingSegment)
     protected Set<String> types;
     @Properties
     @JsonIgnore
