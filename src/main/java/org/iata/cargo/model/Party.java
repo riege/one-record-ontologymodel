@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
 
+import io.swagger.annotations.ApiModelProperty;
 import org.iata.cargo.Vocabulary;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,6 +44,7 @@ public class Party
     protected String description;
     @Types
     @JsonProperty("@type")
+    @ApiModelProperty(allowableValues = Vocabulary.s_c_Party)
     protected Set<String> types;
     @Properties
     @JsonIgnore
