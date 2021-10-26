@@ -3,7 +3,11 @@ name: release
 on:
   push:
     tags:
-      - v*
+      - "[0-9]+.[0-9]+.[0-9]+*"
+
+env:
+  GITHUB_PACKAGES_ACCESS_USER: ${{ secrets.GH_PACKAGES_ACCESS_USER }}
+  GITHUB_PACKAGES_ACCESS_TOKEN: ${{ secrets.GH_PACKAGES_ACCESS_TOKEN }}
 
 jobs:
   release:
@@ -13,28 +17,28 @@ jobs:
       - name: Checkout latest code
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Set up JDK with Dependency Caching
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
           java-version: 8
-
-      - name: Cache Gradle Wrapper
-        uses: actions/cache@v2
-        with:
-          path: ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('**/gradle-wrapper.properties') }}
-
-      - name: Cache Gradle Caches
-        uses: actions/cache@v2
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-cache-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: ${{ runner.os }}-gradle-cache
+          cache: 'gradle'
 
       - name: Get tag version
         id: get_version
         uses: battila7/get-version-action@v2
+
+      - name: Create release artifacts
+        run: ./gradlew -Pversion=${{ steps.get_version.outputs.version-without-v }} jar sourcesJar
+
+      - name: Release without Changelog
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ONE.Record Ontology-Model Library ${{ steps.get_version.outputs.version-without-v }}
+          files: |
+            build/libs/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish artifacts to GitHub Packages
         run: |
@@ -46,12 +50,3 @@ jobs:
           MAVEN_PUBLISH_URL: https://maven.pkg.github.com/${{ github.repository }}
           MAVEN_PUBLISH_USERNAME: ${{ github.actor }}
           MAVEN_PUBLISH_PASSWORD: ${{ github.token }}
-
-      - name: Release with Changelog
-        uses: marvinpinto/action-automatic-releases@latest
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          prerelease: false
-          title: "ONE.Record Ontology-Model Library ${{ steps.get_version.outputs.version }}"
-          files: |
-            build/libs/*.jar
