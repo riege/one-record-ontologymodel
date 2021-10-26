@@ -1,18 +1,50 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
-    id 'idea'
 }
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-
-group 'com.riege'
-version '1.1.1'
-
-repositories {
-    mavenCentral()
+/*
+ * Gets the version name from the latest Git tag, omit leading "v" - yeah!
+ * Note: a plugin way to do this would be via https://plugins.gradle.org/plugin/net.nemerosa.versioning
+ */
+def getVersionName = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--tags', '--always'
+        standardOutput = stdout
+    }
+    def tag = stdout.toString().trim()
+    return tag.startsWith("v") ? tag.substring(1) : tag
 }
+
+/*
+ * Gets the commit hash from the latest Git
+ * Note: a plugin way to do this would be via https://plugins.gradle.org/plugin/net.nemerosa.versioning
+ */
+def getGitCommitHash = {
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'log', '-1', '--format="%H"'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim().replace("\"", "")
+}
+
+version = version != null && version != "unspecified" ? version : getVersionName()
+
+ext {
+    specVendor           = 'International Air Transport Association (IATA)'
+    product              = 'ONE Record Ontology-Model'
+    specTitle            = product + ' Specification'
+    implVendor           = 'Riege Software'
+    implTitle            = product + ' Java Library'
+    implDescription      = implVendor + ' ' + product + ' Java Library'
+    specVersion          = '1.1'
+    implVersion          = version
+    javaTarget           = JavaVersion.VERSION_1_8
+}
+
+
 
 configurations.all {
     // Disabling transitive resolution of dependencies
@@ -33,27 +65,65 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
 }
 
+group 'com.riege'
+sourceCompatibility = javaTarget
+targetCompatibility = javaTarget
+
 java {
     withSourcesJar()    // to get a "sourcesJar" task
     withJavadocJar()    // to get a "javadocJar" task
+}
+
+tasks.withType(Jar) {
+    manifest {
+        attributes(
+                "Built-By"               : System.properties['user.name'],
+                "Build-Revision"         : getGitCommitHash(),
+                "Build-Timestamp"		 : new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+                "Build-Jdk"      		 : "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Build-OS"      		 : "${System.properties['os.name']} ${System.properties['os.arch']} ${System.properties['os.version']}",
+                "Created-By"     		 : "Gradle ${gradle.gradleVersion}",
+                "Specification-Title"    : specTitle,
+                "Specification-Vendor"   : specVendor,
+                "Specification-Version"  : specVersion,
+                "Implementation-Title"   : implTitle,
+                "Implementation-Vendor"  : implVendor,
+                "Implementation-Version" : implVersion
+        )
+    }
 }
 
 test {
     useJUnitPlatform()
 }
 
+repositories {
+    mavenCentral()
+}
+
 publishing {
     publications {
-        maven(MavenPublication) {
+        thisLibrary(MavenPublication) {
+            groupId group
             from components.java
             pom {
-                name = "Riege Software International ONE.Record Ontology-Model Library"
+                name = implTitle
+                description = implDescription
                 url = System.getenv("PROJECT_URL")
+            }
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
             }
         }
     }
     repositories {
         maven {
+            name = "thisLibrary"
             url = System.getenv("MAVEN_PUBLISH_URL")
             credentials {
                 username = System.getenv("MAVEN_PUBLISH_USERNAME")
