@@ -13,7 +13,7 @@ in package `org.iata.cargo.codelists` which are not generated from the
 Ontology but might be useful for fields where values are limited to code
 lists. Please note the `codelists` packages are incomplete and do not
 mirror all cods from the Ontology. 
-See also https://github.com/IATA-Cargo/ONE-Record/issues/92 for details about
+See also [IATA-Cargo/ONE-Record Issue#92](https://github.com/IATA-Cargo/ONE-Record/issues/92) for details about
 "Standard values of enumerations".
 
 ## How to use / Dependencies
@@ -30,14 +30,16 @@ See these examples about the POJOs used in projects:
 ## Used Ontology / Data model version
 
 In general, the official IATA Ontology determines the 1R data model.  The IATA Ontology is available in various versions at GitHub.
-The IATA Cargo Operations and Technology Board (COTB, https://www.iata.org/en/programs/workgroups/cotb/)
+The IATA [Cargo Operations and Technology Board, COTB](https://www.iata.org/en/programs/workgroups/cotb)
 approved various Ontology versions. 
 
-Ontologies prior version 1.1
-(<a href="https://github.com/IATA-Cargo/ONE-Record/tree/master/June-2021-standard-COTB-endorsed">https://github.com/IATA-Cargo/ONE-Record/tree/master/June-2021-standard-COTB-endorsed</a>)
+Ontologies prior [version 1.1](https://github.com/IATA-Cargo/ONE-Record/tree/master/June-2021-standard-COTB-endorsed)
 have not been covered enought data fields required used by forwarders in the CargoIMP/XMP (X)FWB.
 
 This project aims to keeps it's releases and versioning in synchronization with the IATA Ontologies, starting with IATA ONE Record Ontology version 1.1.
+
+Update 2021-OCT: On Oct-22th IATA [fixed a bug in Ontology 1.1](https://github.com/IATA-Cargo/ONE-Record/tree/master/June-2021-standard-COTB-endorsed),
+this fix is mirrored in release 1.1.1 of this library.
 
 ## Question and Feedback
 
