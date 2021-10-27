@@ -70,7 +70,6 @@ targetCompatibility = javaTarget
 
 java {
     withSourcesJar()    // to get a "sourcesJar" task
-    withJavadocJar()    // to get a "javadocJar" task
 }
 
 tasks.withType(Jar) {
