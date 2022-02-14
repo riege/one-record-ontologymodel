@@ -54,4 +54,13 @@ Two options to apply the patch:
   3. patch --dry-run -p1 <$TEMP/patchontololy/ontology.patch
   4. patch -p1 <$TEMP/patchontololy/ontology.patch
 
+NOTE: Some additional annotations must be added to new fields manually, e.g. @JsonProperty(..)
+      For every changed "@OWLObjectProperty" and every changd "@OWLDataProperty" in the patch,
+      there must be a matching changed "@JsonProperty"!
+      A little bash script might help:
+
+      O=$(git diff | grep "^+ *@OWLObjectProperty" | wc -l) ;
+      D=$(git diff | grep "^+ *@OWLDataProperty"   | wc -l);
+      J=$(git diff | grep "^+ *@JsonProperty"      | wc -l)
+      echo "You better check $(echo $O + $D - $J | bc) @JsonProperty annotations."
 EOT

@@ -112,7 +112,7 @@ public class TransportMeans
     @JsonProperty(Vocabulary.s_p_vehicleSize)
     protected String vehicleSize;
     /**
-     * Vehicle or container type. Refer UNECE28, e.g. 4.00.0 - Aircraft, type unknown
+     * Vehicle or container type. Refer UNECE28, e.g. 4.00.0 - Aircraft, type unknown.For Air refer to IATA Standard Schedules Information Manua in section ATA/IATA Aircraft Types
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_vehicleType)

@@ -64,7 +64,7 @@ public class Ranges
     @JsonProperty(Vocabulary.s_p_minimumQuantity)
     protected Double minimumQuantity;
     /**
-     * Rate class code e.g. Q
+     * Rate class code e.g. Q. Refer to CXML Code List 1.4 Rate Class Codes
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_rateClassCode)
@@ -74,7 +74,7 @@ public class Ranges
     @JsonProperty(Vocabulary.s_p_rateClassCode)
     protected String rateClassCode;
     /**
-     * rating type - list uldRatingType
+     * rating type - Refer to CXML Code List 1.44 ULD Charge Codes
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_ratingType)

@@ -42,7 +42,17 @@ public class Ratings
     @JsonProperty(Vocabulary.s_p_ranges)
     protected Set<Ranges> ranges;
     /**
-     * Code of the charge e.g. MY, SC, etc.
+     * Billig charge identifiers to be used for CASS. Refer to CargoXML Code List 1.33
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_billingChargeIdentifier)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_billingChargeIdentifier)
+    protected String billingChargeIdentifier;
+    /**
+     * Charge code, refer to CargoXML Code List 1.1
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_chargeCode)
@@ -62,7 +72,7 @@ public class Ratings
     @JsonProperty(Vocabulary.s_p_chargeDescription)
     protected String chargeDescription;
     /**
-     * Indicates if charge is prepaid or collect (S, P)
+     * Indicates if charge is prepaid or collect (P, C)
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_chargePaymentType)
@@ -78,6 +88,16 @@ public class Ratings
     })
     @JsonProperty(Vocabulary.s_p_chargeType)
     protected String chargeType;
+    /**
+     * Refer to CargoXML Code List 1.2 for Other Charges
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_otherChargeCode)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_otherChargeCode)
+    protected String otherChargeCode;
     /**
      * Specification of the price e.g. Street, Group, Spot, etc.
      * 
@@ -124,6 +144,14 @@ public class Ratings
         return ranges;
     }
 
+    public void setBillingChargeIdentifier(String billingChargeIdentifier) {
+        this.billingChargeIdentifier = billingChargeIdentifier;
+    }
+
+    public String getBillingChargeIdentifier() {
+        return billingChargeIdentifier;
+    }
+
     public void setChargeCode(String chargeCode) {
         this.chargeCode = chargeCode;
     }
@@ -154,6 +182,14 @@ public class Ratings
 
     public String getChargeType() {
         return chargeType;
+    }
+
+    public void setOtherChargeCode(String otherChargeCode) {
+        this.otherChargeCode = otherChargeCode;
+    }
+
+    public String getOtherChargeCode() {
+        return otherChargeCode;
     }
 
     public void setPriceSpecification(String priceSpecification) {

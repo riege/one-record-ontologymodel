@@ -2,7 +2,9 @@
 package org.iata.cargo.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import cz.cvut.kbss.jopa.model.annotations.OWLClass;
+import cz.cvut.kbss.jopa.model.annotations.OWLDataProperty;
 import cz.cvut.kbss.jopa.model.annotations.OWLObjectProperty;
 import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraint;
 import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraints;
@@ -42,6 +44,46 @@ public class BookingTimes
     })
     @JsonProperty(Vocabulary.s_p_bookingOptionRequest)
     protected BookingOptionRequest bookingOptionRequest;
+    /**
+     * Earliest acceptance date time (requested or proposed)
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_earliestAcceptanceTime)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_earliestAcceptanceTime)
+    protected Date earliestAcceptanceTime;
+    /**
+     * Latest Acceptance time as per CargoIQ definition (requested, proposed or actual)
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_latestAcceptanceTime_A)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_latestAcceptanceTime_A)
+    protected Date latestAcceptanceTime;
+    /**
+     * Time of availability of the shipment as per CargoIQ definition
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_timeOfAvailability_A)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_timeOfAvailability_A)
+    protected Date timeOfAvailability;
+    /**
+     * Total transit time as per CargoIQ definition, expressed as a duration
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_totalTransitTime_A)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_totalTransitTime_A)
+    protected String totalTransitTime;
 
     public void setBookingOption(BookingOption bookingOption) {
         this.bookingOption = bookingOption;
@@ -57,6 +99,38 @@ public class BookingTimes
 
     public BookingOptionRequest getBookingOptionRequest() {
         return bookingOptionRequest;
+    }
+
+    public void setEarliestAcceptanceTime(Date earliestAcceptanceTime) {
+        this.earliestAcceptanceTime = earliestAcceptanceTime;
+    }
+
+    public Date getEarliestAcceptanceTime() {
+        return earliestAcceptanceTime;
+    }
+
+    public void setLatestAcceptanceTime(Date latestAcceptanceTime) {
+        this.latestAcceptanceTime = latestAcceptanceTime;
+    }
+
+    public Date getLatestAcceptanceTime() {
+        return latestAcceptanceTime;
+    }
+
+    public void setTimeOfAvailability(Date timeOfAvailability) {
+        this.timeOfAvailability = timeOfAvailability;
+    }
+
+    public Date getTimeOfAvailability() {
+        return timeOfAvailability;
+    }
+
+    public void setTotalTransitTime(String totalTransitTime) {
+        this.totalTransitTime = totalTransitTime;
+    }
+
+    public String getTotalTransitTime() {
+        return totalTransitTime;
     }
 
 }

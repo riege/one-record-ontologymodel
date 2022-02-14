@@ -9,6 +9,7 @@ import org.iata.cargo.Vocabulary;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import cz.cvut.kbss.jopa.model.annotations.OWLClass;
+import cz.cvut.kbss.jopa.model.annotations.OWLDataProperty;
 import cz.cvut.kbss.jopa.model.annotations.OWLObjectProperty;
 import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraint;
 import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraints;
@@ -64,6 +65,16 @@ public class Insurance
     })
     @JsonProperty(Vocabulary.s_p_insuranceShipment)
     protected Shipment insuranceShipment;
+    /**
+     * When no value is declared for Insurance this field should be completed with the value TRUE otherwise FALSE
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_nvdIndicator)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#boolean", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_nvdIndicator)
+    protected Boolean nvdIndicator;
 
     public void setCoveringParty(Company coveringParty) {
         this.coveringParty = coveringParty;
@@ -95,6 +106,14 @@ public class Insurance
 
     public void setTypes(Set<String> types) {
         this.types = types;
+    }
+
+    public void setNvdIndicator(Boolean nvdIndicator) {
+        this.nvdIndicator = nvdIndicator;
+    }
+
+    public Boolean getNvdIndicator() {
+        return nvdIndicator;
     }
 
 }

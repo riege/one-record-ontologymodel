@@ -216,7 +216,7 @@ public class ULD
     @JsonProperty(Vocabulary.s_p_uldSealNumber)
     protected String uldSealNumber;
     /**
-     * Standard Unit Load Device type code e.g. AKE - Certified Container - Contoured
+     * Standard Unit Load Device type code e.g. AKE - Certified Container - Contoured. Refer to IATA ULD Technical Manual
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_uldTypeCode)

@@ -43,6 +43,13 @@ public class Routing
     @JsonProperty(Vocabulary.s_p_bookingOption_A_A_A)
     protected BookingOption bookingOption;
     /**
+     * Scheduled Legs class to be used to identify legs. Can be used with Booking Option Request as an indicator of preferred Routing or with Booking Option when a carrier proposes a specific Routing.
+     * 
+     */
+    @OWLObjectProperty(iri = Vocabulary.s_p_scheduledLegs)
+    @JsonProperty(Vocabulary.s_p_scheduledLegs)
+    protected Set<ScheduledLegs> scheduledLegs;
+    /**
      * Aircraft possibility code
      * 
      */
@@ -99,6 +106,14 @@ public class Routing
 
     public BookingOption getBookingOption() {
         return bookingOption;
+    }
+
+    public void setScheduledLegs(Set<ScheduledLegs> scheduledLegs) {
+        this.scheduledLegs = scheduledLegs;
+    }
+
+    public Set<ScheduledLegs> getScheduledLegs() {
+        return scheduledLegs;
     }
 
     public void setAircraftPossibilityCode(String aircraftPossibilityCode) {

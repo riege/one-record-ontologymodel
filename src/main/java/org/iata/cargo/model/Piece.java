@@ -117,10 +117,7 @@ public class Piece
      */
     @JsonProperty(Vocabulary.s_p_product_A_A)
     @OWLObjectProperty(iri = Vocabulary.s_p_product_A_A)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
-    })
-    protected Product product;
+    protected Set<Product> product;
     /**
      * Goods production country, mandatory when there are no Items
      * 
@@ -215,8 +212,8 @@ public class Piece
      */
     @OWLObjectProperty(iri = Vocabulary.s_p_volumetricWeight)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1),
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, min = 1, max = -1)
+        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, min = 1, max = -1),
+        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
     @JsonProperty(Vocabulary.s_p_volumetricWeight)
     protected VolumetricWeight volumetricWeight;
@@ -250,8 +247,8 @@ public class Piece
      */
     @OWLDataProperty(iri = Vocabulary.s_p_goodsDescription)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1),
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1),
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1)
     })
     @JsonProperty(Vocabulary.s_p_goodsDescription)
     protected String goodsDescription;
@@ -265,6 +262,26 @@ public class Piece
     })
     @JsonProperty(Vocabulary.s_p_loadType)
     protected String loadType;
+    /**
+     * When no value is declared for Carriage, this field may be completed with the value TRUE otherwise FALSE
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_nvdForCarriage)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#boolean", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_nvdForCarriage)
+    protected Boolean nvdForCarriage;
+    /**
+     * When no value is declared for Customs, this field may be completed with the value TRUE otherwise FALSE
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_nvdForCustoms)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#boolean", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_nvdForCustoms)
+    protected Boolean nvdForCustoms;
     /**
      * Reference identifying how the package is marked. Field is hardcode to "SSCC-18", "UPC" or "Other"
      * 
@@ -413,11 +430,11 @@ public class Piece
         return parties;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(Set<Product> product) {
         this.product = product;
     }
 
-    public Product getProduct() {
+    public Set<Product> getProduct() {
         return product;
     }
 
@@ -547,6 +564,22 @@ public class Piece
 
     public String getLoadType() {
         return loadType;
+    }
+
+    public void setNvdForCarriage(Boolean nvdForCarriage) {
+        this.nvdForCarriage = nvdForCarriage;
+    }
+
+    public Boolean getNvdForCarriage() {
+        return nvdForCarriage;
+    }
+
+    public void setNvdForCustoms(Boolean nvdForCustoms) {
+        this.nvdForCustoms = nvdForCustoms;
+    }
+
+    public Boolean getNvdForCustoms() {
+        return nvdForCustoms;
     }
 
     public void setPackageMarkCoded(String packageMarkCoded) {

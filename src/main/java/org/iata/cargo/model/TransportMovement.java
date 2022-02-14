@@ -31,11 +31,11 @@ public class TransportMovement
      * Arrival location details
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_arrivalLocation_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_arrivalLocation_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_arrivalLocation_A)
+    @JsonProperty(Vocabulary.s_p_arrivalLocation_A_A)
     protected Location arrivalLocation;
     /**
      * Amount of CO2 emitted (e.g. 34 kg/km)
@@ -48,11 +48,11 @@ public class TransportMovement
      * Departure location details
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_departureLocation_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_departureLocation_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_departureLocation_A)
+    @JsonProperty(Vocabulary.s_p_departureLocation_A_A)
     protected Location departureLocation;
     /**
      * Distance calculated if distance measured is not available
@@ -153,7 +153,8 @@ public class TransportMovement
     @JsonProperty(Vocabulary.s_p_fuelType)
     protected String fuelType;
     /**
-     * Mode Code
+     * Mode of transport code, refer to UNECE Rec. 19
+     * https://unece.org/fileadmin/DAM/cefact/recommendations/rec19/rec19_01cf19e.pdf
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_modeCode)

@@ -133,7 +133,7 @@ public class BookingOptionRequest
     @JsonProperty(Vocabulary.s_p_expectedCommodities)
     protected Set<String> expectedCommodities;
     /**
-     * Identification of the request type: Quote or Booking
+     * Identification of the request type: Quote or Booking (to be confirmed)
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_requestType)

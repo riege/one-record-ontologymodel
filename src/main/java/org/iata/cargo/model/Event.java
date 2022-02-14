@@ -105,7 +105,7 @@ public class Event
     })
     protected Date dateTime;
     /**
-     * Movement or milestone code. Refer CXML Code List 1.18, e.g. DEP, ARR, FOH, RCS
+     * Movement or milestone code. Can refer to CXML Code List 1.18, e.g. DEP, ARR, FOH, RCS but not restricted to it.
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_eventCode)

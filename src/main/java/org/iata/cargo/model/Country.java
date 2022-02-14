@@ -65,7 +65,7 @@ public class Country
     @JsonProperty(Vocabulary.s_p_countryCode)
     protected String countryCode;
     /**
-     * Full country name
+     * Full country name, Refer ISO 3166-2
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_countryName)
