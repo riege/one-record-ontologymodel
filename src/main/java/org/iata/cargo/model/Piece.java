@@ -3,11 +3,6 @@ package org.iata.cargo.model;
 
 import java.io.Serializable;
 import java.util.Set;
-
-import org.iata.cargo.Vocabulary;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import cz.cvut.kbss.jopa.model.annotations.OWLClass;
 import cz.cvut.kbss.jopa.model.annotations.OWLDataProperty;
 import cz.cvut.kbss.jopa.model.annotations.OWLObjectProperty;
@@ -15,7 +10,9 @@ import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraint;
 import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraints;
 import cz.cvut.kbss.jopa.model.annotations.Types;
 import io.swagger.annotations.ApiModelProperty;
+import org.iata.cargo.Vocabulary;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Individual piece or virtual grouping of pieces
@@ -118,11 +115,11 @@ public class Piece
      * Product of the piece, mandatory when there are no items
      * 
      */
+    @JsonProperty(Vocabulary.s_p_product_A_A)
     @OWLObjectProperty(iri = Vocabulary.s_p_product_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_product_A_A)
     protected Product product;
     /**
      * Goods production country, mandatory when there are no Items

@@ -2,16 +2,13 @@
 package org.iata.cargo.model;
 
 import java.io.Serializable;
-
-import org.iata.cargo.Vocabulary;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import cz.cvut.kbss.jopa.model.annotations.OWLClass;
 import cz.cvut.kbss.jopa.model.annotations.OWLObjectProperty;
 import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraint;
 import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraints;
+import org.iata.cargo.Vocabulary;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Previsouly called Schedule. This object refers to times used for the Booking Option Request (preferences part of the request) or the Booking Option (times sur as LAT where there is a commitment from the carrier)

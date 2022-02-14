@@ -4,11 +4,6 @@ package org.iata.cargo.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-
-import org.iata.cargo.Vocabulary;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import cz.cvut.kbss.jopa.model.annotations.OWLClass;
 import cz.cvut.kbss.jopa.model.annotations.OWLDataProperty;
 import cz.cvut.kbss.jopa.model.annotations.OWLObjectProperty;
@@ -16,7 +11,9 @@ import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraint;
 import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraints;
 import cz.cvut.kbss.jopa.model.annotations.Types;
 import io.swagger.annotations.ApiModelProperty;
+import org.iata.cargo.Vocabulary;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Routing details
