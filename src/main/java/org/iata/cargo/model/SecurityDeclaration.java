@@ -96,6 +96,11 @@ public class SecurityDeclaration
     protected String additionalSecurityInformation;
     /**
      * Exemption code - e.g. BIOM- Bio-Medical Samples 
+     * SMUS - small undersized shipments MAIL - mail
+     * BIOM - bio-medical samples
+     * DIPL - diplomatic bags or diplomatic mail
+     * LFSM - life-saving materials NUCL - nuclear materials
+     * TRNS - transfer or transshipment
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_groundsForExemption)
@@ -107,8 +112,8 @@ public class SecurityDeclaration
      */
     @OWLDataProperty(iri = Vocabulary.s_p_issuedOn)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1),
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", min = 1, max = -1)
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", min = 1, max = -1),
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
     })
     @JsonProperty(Vocabulary.s_p_issuedOn)
     protected Date issuedOn;
@@ -120,7 +125,15 @@ public class SecurityDeclaration
     @JsonProperty(Vocabulary.s_p_otherScreeningMethods)
     protected Set<String> otherScreeningMethods;
     /**
-     * Screening methods which have been used to secure the cargo - e.g. EDS- Explosive Detection System  
+     * Screening methods which have been used to secure the cargo
+     * PHS \u2013 Physical Inspection and/or hand search 
+     * VCK - Visual check 
+     * XRY- X-ray equipment 
+     * EDS - Explosive detection system 
+     * EDD - Explosive detection dogs
+     * ETD - Explosive trace detection equipment - particles or vapor 
+     * CMD - Cargo metal detection
+     * AOM - Subjected to any other means: this entry should be followed by free text specifying what other mean was used to secure the cargo
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_screeningMethod)

@@ -83,7 +83,7 @@ public class Product
     @JsonProperty(Vocabulary.s_p_commodityItemNumber)
     protected String commodityItemNumber;
     /**
-     * Reference identifying the type of standard code to be used for the Commodity Classification (Brussels Tariff Nomenclature, EU Harmonized System Code, UN Standard International Trade Classification). Mandatory if the commodity code is more than 6 digits
+     * Harmonized Commodity code, refer to hsType used. 6 minimum digits are expected.
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_hsCode)
@@ -112,13 +112,13 @@ public class Product
     @JsonProperty(Vocabulary.s_p_hsCommodityName)
     protected Set<String> hsCommodityName;
     /**
-     * Issuer of the Commodity Code - e.g. Brussels Tariff Nomenclature, EU Harmonized System Code, UN Standard International Trade, etc.
+     * Reference identifying the type of standard code to be used for the Commodity Classification (Brussels Tariff Nomenclature, EU Harmonized System Code, UN Standard International Trade Classification). Mandatory if the commodity code is more than 6 digits
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_hsType)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1),
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1),
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1)
     })
     @JsonProperty(Vocabulary.s_p_hsType)
     protected String hsType;

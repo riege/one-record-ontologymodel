@@ -4,11 +4,6 @@ package org.iata.cargo.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
-
-import org.iata.cargo.Vocabulary;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import cz.cvut.kbss.jopa.model.annotations.OWLClass;
 import cz.cvut.kbss.jopa.model.annotations.OWLDataProperty;
 import cz.cvut.kbss.jopa.model.annotations.OWLObjectProperty;
@@ -16,7 +11,9 @@ import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraint;
 import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraints;
 import cz.cvut.kbss.jopa.model.annotations.Types;
 import io.swagger.annotations.ApiModelProperty;
+import org.iata.cargo.Vocabulary;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Routing details
@@ -45,6 +42,13 @@ public class Routing
     })
     @JsonProperty(Vocabulary.s_p_bookingOption_A_A_A)
     protected BookingOption bookingOption;
+    /**
+     * Scheduled Legs class to be used to identify legs. Can be used with Booking Option Request as an indicator of preferred Routing or with Booking Option when a carrier proposes a specific Routing.
+     * 
+     */
+    @OWLObjectProperty(iri = Vocabulary.s_p_scheduledLegs)
+    @JsonProperty(Vocabulary.s_p_scheduledLegs)
+    protected Set<ScheduledLegs> scheduledLegs;
     /**
      * Aircraft possibility code
      * 
@@ -102,6 +106,14 @@ public class Routing
 
     public BookingOption getBookingOption() {
         return bookingOption;
+    }
+
+    public void setScheduledLegs(Set<ScheduledLegs> scheduledLegs) {
+        this.scheduledLegs = scheduledLegs;
+    }
+
+    public Set<ScheduledLegs> getScheduledLegs() {
+        return scheduledLegs;
     }
 
     public void setAircraftPossibilityCode(String aircraftPossibilityCode) {

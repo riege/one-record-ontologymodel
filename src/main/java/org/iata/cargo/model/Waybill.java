@@ -2,6 +2,7 @@
 package org.iata.cargo.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import org.iata.cargo.Vocabulary;
@@ -54,6 +55,17 @@ public class Waybill
     @JsonProperty(Vocabulary.s_p_bookingRef_A)
     protected Booking bookingRef;
     /**
+     * Location of individual or company involved in the movement of a consignment or Coded representation of a specific airport/city code
+     * 
+     */
+    @OWLObjectProperty(iri = Vocabulary.s_p_carrierDeclarationPlace)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1),
+        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, min = 1, max = -1)
+    })
+    @JsonProperty(Vocabulary.s_p_carrierDeclarationPlace)
+    protected Location carrierDeclarationPlace;
+    /**
      * Refers to the Waybill(s) contained
      * 
      */
@@ -71,6 +83,35 @@ public class Waybill
     })
     protected String accountingInformation;
     /**
+     * Date upon which the certification is made by the carrier
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_carrierDeclarationDate)
+    @JsonProperty(Vocabulary.s_p_carrierDeclarationDate)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", min = 1, max = -1),
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
+    })
+    protected Date carrierDeclarationDate;
+    /**
+     * Contains the authentication of the Carrier
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_carrierDeclarationSignature)
+    @JsonProperty(Vocabulary.s_p_carrierDeclarationSignature)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1),
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1)
+    })
+    protected String carrierDeclarationSignature;
+    /**
+     * Name of consignor signatory
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_consignorDeclarationSignature)
+    @JsonProperty(Vocabulary.s_p_consignorDeclarationSignature)
+    protected Set<String> consignorDeclarationSignature;
+    /**
      * Charges levied at destination accruing to the last carrier, in destination currency
      * 
      */
@@ -78,7 +119,7 @@ public class Waybill
     @JsonProperty(Vocabulary.s_p_destinationCharges)
     protected Set<Double> destinationCharges;
     /**
-     * ISO 3-letter currency code of destination
+     * ISO 3-letter currency code of destination. Refer to ISO 4217
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_destinationCurrencyCode)
@@ -118,6 +159,16 @@ public class Waybill
     })
     protected String optionalShippingRefNo;
     /**
+     * ISO alpha 3 Code used to indicate the Origin Currency, refer to ISO 4217 currency codes
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_originCurrency)
+    @JsonProperty(Vocabulary.s_p_originCurrency)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
+    })
+    protected String originCurrency;
+    /**
      * House or Master Waybill unique identifier
      * 
      */
@@ -129,7 +180,7 @@ public class Waybill
     @JsonProperty(Vocabulary.s_p_waybillNumber_A_A_A)
     protected String waybillNumber;
     /**
-     * Prefix used for the Waybill Number
+     * Prefix used for the Waybill Number. Refer to IATA Airlines Codes
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_waybillPrefix)
@@ -167,6 +218,14 @@ public class Waybill
         return bookingRef;
     }
 
+    public void setCarrierDeclarationPlace(Location carrierDeclarationPlace) {
+        this.carrierDeclarationPlace = carrierDeclarationPlace;
+    }
+
+    public Location getCarrierDeclarationPlace() {
+        return carrierDeclarationPlace;
+    }
+
     public void setContainedWaybills(Set<Waybill> containedWaybills) {
         this.containedWaybills = containedWaybills;
     }
@@ -181,6 +240,30 @@ public class Waybill
 
     public String getAccountingInformation() {
         return accountingInformation;
+    }
+
+    public void setCarrierDeclarationDate(Date carrierDeclarationDate) {
+        this.carrierDeclarationDate = carrierDeclarationDate;
+    }
+
+    public Date getCarrierDeclarationDate() {
+        return carrierDeclarationDate;
+    }
+
+    public void setCarrierDeclarationSignature(String carrierDeclarationSignature) {
+        this.carrierDeclarationSignature = carrierDeclarationSignature;
+    }
+
+    public String getCarrierDeclarationSignature() {
+        return carrierDeclarationSignature;
+    }
+
+    public void setConsignorDeclarationSignature(Set<String> consignorDeclarationSignature) {
+        this.consignorDeclarationSignature = consignorDeclarationSignature;
+    }
+
+    public Set<String> getConsignorDeclarationSignature() {
+        return consignorDeclarationSignature;
     }
 
     public void setDestinationCharges(Set<Double> destinationCharges) {
@@ -221,6 +304,14 @@ public class Waybill
 
     public String getOptionalShippingRefNo() {
         return optionalShippingRefNo;
+    }
+
+    public void setOriginCurrency(String originCurrency) {
+        this.originCurrency = originCurrency;
+    }
+
+    public String getOriginCurrency() {
+        return originCurrency;
     }
 
     public void setWaybillNumber(String waybillNumber) {

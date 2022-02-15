@@ -185,7 +185,7 @@ public class BookingOption
     @JsonProperty(Vocabulary.s_p_waybillNumber_A)
     protected Waybill waybillNumber;
     /**
-     * Status of the Booking with regards to the step in the Quote and Book process: Quoted, Booked
+     * Status of the Booking with regards to the step in the Quote and Book process: Quoted, Booked (to be confirmed)
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_bookingStatus_A)

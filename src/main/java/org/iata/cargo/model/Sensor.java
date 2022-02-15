@@ -75,7 +75,7 @@ public class Sensor
     @JsonProperty(Vocabulary.s_p_sensorSerialNumber)
     protected String sensorSerialNumber;
     /**
-     * Type of sensor as described in Interactive Cargo RP
+     * Type of sensor as described in Interactive Cargo Recommended Practice
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_sensorType)

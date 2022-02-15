@@ -118,7 +118,7 @@ public class ExternalReference
     @JsonProperty(Vocabulary.s_p_documentName)
     protected String documentName;
     /**
-     * Type of the referenced document . Refer UNEDIFACT 1001  e.g. 740 - Air Waybill
+     * Type of the referenced document . Can refer UNEDIFACT 1001  e.g. 740 - Air Waybill, but not limited to
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_documentType)

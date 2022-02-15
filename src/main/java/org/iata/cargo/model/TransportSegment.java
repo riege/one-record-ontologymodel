@@ -40,11 +40,11 @@ public class TransportSegment
      * Arrival location details
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_arrivalLocation_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_arrivalLocation_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_arrivalLocation_A)
+    @JsonProperty(Vocabulary.s_p_arrivalLocation_A_A)
     protected Location arrivalLocation;
     /**
      * Method of calculation of the CO2 emissions
@@ -67,11 +67,11 @@ public class TransportSegment
      * Departure location details
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_departureLocation_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_departureLocation_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_departureLocation_A)
+    @JsonProperty(Vocabulary.s_p_departureLocation_A_A)
     protected Location departureLocation;
     /**
      * Distance calculated if distance measured is not available
@@ -167,11 +167,11 @@ public class TransportSegment
      * Included in MovementTimes in v1.1
      * 
      */
-    @OWLDataProperty(iri = Vocabulary.s_p_arrivalDate)
+    @OWLDataProperty(iri = Vocabulary.s_p_arrivalDate_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_arrivalDate)
+    @JsonProperty(Vocabulary.s_p_arrivalDate_A)
     protected Date arrivalDate;
     /**
      * Departure date and time. Actual or planned depends on the movementType property
@@ -179,11 +179,11 @@ public class TransportSegment
      * Included in MovementTimes in v1.1
      * 
      */
-    @OWLDataProperty(iri = Vocabulary.s_p_departureDate)
+    @OWLDataProperty(iri = Vocabulary.s_p_departureDate_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_departureDate)
+    @JsonProperty(Vocabulary.s_p_departureDate_A)
     protected Date departureDate;
     /**
      * e.g. Kerosene, Diesel, SAF, Electricity [renewable], Electricity [non-renewable]
@@ -196,7 +196,8 @@ public class TransportSegment
     @JsonProperty(Vocabulary.s_p_fuelType)
     protected String fuelType;
     /**
-     * Mode Code
+     * Mode of transport code, refer to UNECE Rec. 19
+     * https://unece.org/fileadmin/DAM/cefact/recommendations/rec19/rec19_01cf19e.pdf
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_modeCode)

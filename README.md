@@ -51,7 +51,7 @@ https://github.com/IATA-Cargo/ONE-Record/issues.
 
 Generation of Java domain classes from the Ontology is part of the IATA Sandbox implementation, see https://github.com/IATA-Cargo/one-record-server-java/blob/master/README.md.
 
-Updating file `iata.ttl` in this project and applying step "Generate ONE Record cargo related data model" from the README generates the POJOs.
+Updating file `iata.ttl` in [that project](https://github.com/IATA-Cargo/one-record-server-java) and applying step "Generate ONE Record cargo related data model" from the README generates the POJOs.
 
 It is recommended to remove directory `src/main/generated-sources/org/iata/cargo` prior generation.
 
@@ -61,7 +61,21 @@ Example for generation from IATA-Cargo/one-record-server-java main directory on 
     curl -o iata.ttl https://raw.githubusercontent.com/IATA-Cargo/ONE-Record/master/June-2021-standard-COTB-endorsed/Data-Model/IATA-1R-DM-Ontology-vCOTB-Jun2021.ttl
     mvn package -Dbuild=cargo
 
-Compile might fail now but ```src/main/generated-sources/org/iata/cargo``` contains the freshly generated POJO files which required adoption of annotations
+Example for generation from IATA-Cargo/one-record-server-java main directory on Linux/macOS from Ontology working draft:
+
+    rm -rf src/main/generated-sources/org/iata/cargo
+    curl -o iata.ttl https://raw.githubusercontent.com/IATA-Cargo/ONE-Record/master/working_draft/ontology/IATA-1R-DM-Ontology.ttl
+    mvn package -Dbuild=cargo
+
+Compile might fail now but ```src/main/generated-sources/org/iata/cargo``` contains the freshly generated POJO files which require adoption of annotations
 prior updating this the one-record-ontologymodel project with them.
 
+## Patching endorsed Ontology to working_draft version
+
+The Linux/macOS script `patch-from-ontology-diff.sh` is capable to
+generate a patch-file for the differences of two ontology versions.
+The patch could be applied to update this project with the ontology changes/differences.
+Downloable URLs of the old and new on ontology could be supplied as 1st and 2nd paramter to the script.
+
+## P.S.
 P.S.: As per 2021-Mar-18, the Ontology has various open issues which are likely to be adopted in upcoming versions e.g., https://github.com/IATA-Cargo/ONE-Record/issues/85 or https://github.com/IATA-Cargo/ONE-Record/issues/111

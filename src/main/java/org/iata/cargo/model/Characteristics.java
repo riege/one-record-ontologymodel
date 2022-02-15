@@ -45,7 +45,7 @@ public class Characteristics
     @JsonProperty(Vocabulary.s_p_product)
     protected Product product;
     /**
-     * Product characteristics code - e.g. CLR - Color
+     * Product characteristics code - e.g. CLR - Color. Not restricted to a list.
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_characteristicsType)
