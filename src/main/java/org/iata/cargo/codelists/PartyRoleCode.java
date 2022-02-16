@@ -12,7 +12,9 @@ public enum PartyRoleCode {
     AIRLINE("Airline"),
     AIRPORT("Airport Authority"),
     BROKER("Broker"),
-    COMMISSIONABLEAGENT("Commissionable Agent"),
+    /** Use COMMISSIONABLE_AGENT instead */
+    @Deprecated COMMISSIONABLEAGENT("Commissionable Agent"),
+    COMMISSIONABLE_AGENT("Commissionable Agent"),
     CNE("Consignee"),
     CUSTOMS("Customs"),
     DECLARANT("Declarant"),

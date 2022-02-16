@@ -8,23 +8,43 @@ package org.iata.cargo.codelists;
  */
 public enum MovementIndicatorCode {
 
-    ACTUALARRIVAL("AA"),
-    ACTUALDEPARTURE("AD"),
-    ESTIMATEDARRIVAL("EA"),
-    ESTIMATEDDEPARTURE("ED"),
+    /** Use ACTUAL_ARRIVAL instead */
+    @Deprecated ACTUALARRIVAL("AA"),
+    ACTUAL_ARRIVAL("AA"),
+    /** Use ACTUAL_DEPARTURE instead */
+    @Deprecated ACTUALDEPARTURE("AD"),
+    ACTUAL_DEPARTURE("AD"),
+    /** Use ESTIMATED_ARRIVAL instead */
+    @Deprecated ESTIMATEDARRIVAL("EA"),
+    ESTIMATED_ARRIVAL("EA"),
+    /** Use ESTIMATED_DEPARTURE instead */
+    @Deprecated ESTIMATEDDEPARTURE("ED"),
+    ESTIMATED_DEPARTURE("ED"),
     DELAYED("DL"),
-    NEXTINFORMATION("NI"),
-    SCHEDULEDARRIVAL("SA"),
-    SCHEDULEDDEPARTURE("SD"),
+    /** Use NEXT_INFORMATION instead */
+    @Deprecated NEXTINFORMATION("NI"),
+    NEXT_INFORMATION("NI"),
+    /** Use SCHEDULED_ARRIVAL instead */
+    @Deprecated SCHEDULEDARRIVAL("SA"),
+    SCHEDULED_ARRIVAL("SA"),
+    /** Use SCHEDULED_DEPARTURE instead */
+    @Deprecated SCHEDULEDDEPARTURE("SD"),
+    SCHEDULED_DEPARTURE("SD"),
     CANCELLATION("CN"),
     /** Note: subject to approval by IATA Cargo Service Conference (CSC) */
     DIVERSION("DV"),
+    /** Use DOC_ARRIVAL instead */
+    @Deprecated DOCARRIVAL("DA"),
     /** Note: subject to approval by IATA Cargo Service Conference (CSC) */
-    DOCARRIVAL("DA"),
+    DOC_ARRIVAL("DA"),
+    /** Use FORCE_RETURN instead */
+    @Deprecated FORCERETURN("FR"),
     /** Note: subject to approval by IATA Cargo Service Conference (CSC) */
-    FORCERETURN("FR"),
+    FORCE_RETURN("FR"),
+    /** Use RETURN_TO_RAMP instead */
+    @Deprecated RETURNTO_RAMP("RR"),
     /** Note: subject to approval by IATA Cargo Service Conference (CSC) */
-    RETURNTORAMP("RR"),
+    RETURN_TO_RAMP("RR"),
     ;
 
     private final String code;
