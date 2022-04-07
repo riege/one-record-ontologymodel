@@ -22,6 +22,7 @@ import cz.cvut.kbss.jopa.model.annotations.Properties;
 import cz.cvut.kbss.jopa.model.annotations.Types;
 import cz.cvut.kbss.jopa.vocabulary.RDFS;
 
+import org.iata.cargo.codelists.MovementIndicatorCode;
 
 /**
  * Times refering to Transport Movements, used to describe specfic times such as Actual Departure time, etc.
@@ -141,6 +142,12 @@ public class MovementTimes
 
     public String getDirection() {
         return direction;
+    }
+
+    /* Convenience typesafe setter */
+    public void setMovementMilestone(MovementIndicatorCode movementMilestone) {
+        this.movementMilestone = movementMilestone == null
+            ? null : movementMilestone.code();
     }
 
     public void setMovementMilestone(String movementMilestone) {

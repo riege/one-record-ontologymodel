@@ -17,6 +17,7 @@ import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraints;
 import cz.cvut.kbss.jopa.model.annotations.Types;
 import io.swagger.annotations.ApiModelProperty;
 
+import org.iata.cargo.codelists.WaybillTypeCode;
 
 /**
  * Waybill details
@@ -326,6 +327,12 @@ public class Waybill
 
     public String getWaybillPrefix() {
         return waybillPrefix;
+    }
+
+    /* Convenience typesafe setter */
+    public void setWaybillType(WaybillTypeCode waybillType) {
+        this.waybillType = waybillType == null
+            ? null : waybillType.code();
     }
 
     public void setWaybillType(String waybillType) {

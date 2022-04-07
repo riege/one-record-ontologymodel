@@ -8,7 +8,7 @@ package org.iata.cargo.codelists;
  * Other Service Information (OSI)
  *
  */
-public enum HandlingInstructionsServiceType {
+public enum HandlingInstructionsServiceTypeCode {
 
     SPH("SPH"),
     SSR("SSR"),
@@ -17,7 +17,7 @@ public enum HandlingInstructionsServiceType {
 
     private final String code;
 
-    private HandlingInstructionsServiceType(String code) {
+    private HandlingInstructionsServiceTypeCode(String code) {
         this.code = code;
     }
 

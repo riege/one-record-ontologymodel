@@ -22,6 +22,7 @@ import cz.cvut.kbss.jopa.model.annotations.Properties;
 import cz.cvut.kbss.jopa.model.annotations.Types;
 import cz.cvut.kbss.jopa.vocabulary.RDFS;
 
+import org.iata.cargo.codelists.PartyRoleCode;
 
 /**
  * Refers to a Company and its role in a specific context, e.g Company A as shipper. Cargo-XML Code List 1.15 can be used as a reference with the addition of "Notify Party"
@@ -121,6 +122,12 @@ public class Party
 
     public Company getPartyDetails() {
         return partyDetails;
+    }
+
+    /* Convenience typesafe setter */
+    public void setPartyRole(PartyRoleCode partyRole) {
+        this.partyRole = partyRole == null
+            ? null : partyRole.code();
     }
 
     public void setPartyRole(String partyRole) {

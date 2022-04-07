@@ -16,6 +16,7 @@ import cz.cvut.kbss.jopa.model.annotations.ParticipationConstraints;
 import cz.cvut.kbss.jopa.model.annotations.Types;
 import io.swagger.annotations.ApiModelProperty;
 
+import org.iata.cargo.codelists.BillingChargeCode;
 
 /**
  * Ratings details
@@ -172,6 +173,12 @@ public class Ratings
 
     public Set<Ranges> getRanges() {
         return ranges;
+    }
+
+    /* Convenience typesafe setter */
+    public void setBillingChargeIdentifier(BillingChargeCode billingChargeIdentifier) {
+        this.billingChargeIdentifier = billingChargeIdentifier == null
+            ? null : billingChargeIdentifier.code();
     }
 
     public void setBillingChargeIdentifier(String billingChargeIdentifier) {

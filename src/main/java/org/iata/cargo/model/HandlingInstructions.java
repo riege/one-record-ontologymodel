@@ -21,7 +21,7 @@ import org.iata.cargo.Vocabulary;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import org.iata.cargo.codelists.HandlingInstructionsServiceType;
+import org.iata.cargo.codelists.HandlingInstructionsServiceTypeCode;
 
 /**
  * Used to provide handling instructions such as Special service request (SSR), Special handling codes (SPH) or Other service information (OSI)
@@ -160,13 +160,14 @@ public class HandlingInstructions
         return serviceType;
     }
 
-    public void setServiceTypeCode(String serviceTypeCode) {
-        this.serviceTypeCode = serviceTypeCode;
+    /* Convenience typesafe setter */
+    public void setServiceTypeCode(HandlingInstructionsServiceTypeCode serviceType) {
+        this.serviceTypeCode = serviceType == null
+            ? null : serviceType.code();
     }
 
-    @JsonIgnore
-    public void setServiceType(HandlingInstructionsServiceType serviceType) {
-        this.serviceTypeCode = serviceType == null ? null : serviceType.code();
+    public void setServiceTypeCode(String serviceTypeCode) {
+        this.serviceTypeCode = serviceTypeCode;
     }
 
     public String getServiceTypeCode() {

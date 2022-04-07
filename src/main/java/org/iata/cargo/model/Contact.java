@@ -23,6 +23,7 @@ import cz.cvut.kbss.jopa.vocabulary.DC;
 import cz.cvut.kbss.jopa.vocabulary.RDFS;
 import io.swagger.annotations.ApiModelProperty;
 
+import org.iata.cargo.codelists.ContactTypeCode;
 
 /**
  * Contact details
@@ -138,6 +139,12 @@ public class Contact
 
     public ContactOther getOther() {
         return other;
+    }
+
+    /* Convenience typesafe setter */
+    public void setContactType(ContactTypeCode contactType) {
+        this.contactType = contactType == null
+            ? null : contactType.code();
     }
 
     public void setContactType(String contactType) {
