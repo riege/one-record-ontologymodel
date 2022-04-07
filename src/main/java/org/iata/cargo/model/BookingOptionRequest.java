@@ -72,14 +72,21 @@ public class BookingOptionRequest
     @JsonProperty(Vocabulary.s_p_routingPreferences)
     protected Routing routingPreferences;
     /**
+     * Schedule preferences of the request
+     * 
+     */
+    @OWLObjectProperty(iri = Vocabulary.s_p_schedulePreferences)
+    @JsonProperty(Vocabulary.s_p_schedulePreferences)
+    protected Set<Schedule> schedulePreferences;
+    /**
      * Details of the shipement that is to be shipped
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_shipmentDetails_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_shipmentDetails_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_shipmentDetails_A)
+    @JsonProperty(Vocabulary.s_p_shipmentDetails_A_A)
     protected Shipment shipmentDetails;
     /**
      * Schedule preferences of the request
@@ -95,8 +102,8 @@ public class BookingOptionRequest
      * Transport segment linked to the request, including the Departure and Arrival locations requested
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_transportMovement_A)
-    @JsonProperty(Vocabulary.s_p_transportMovement_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_transportMovement_A_A)
+    @JsonProperty(Vocabulary.s_p_transportMovement_A_A)
     protected Set<TransportSegment> transportMovement;
     /**
      * Unit preferences of the request (e.g. kg or cm)
@@ -183,6 +190,14 @@ public class BookingOptionRequest
 
     public Routing getRoutingPreferences() {
         return routingPreferences;
+    }
+
+    public void setSchedulePreferences(Set<Schedule> schedulePreferences) {
+        this.schedulePreferences = schedulePreferences;
+    }
+
+    public Set<Schedule> getSchedulePreferences() {
+        return schedulePreferences;
     }
 
     public void setShipmentDetails(Shipment shipmentDetails) {
