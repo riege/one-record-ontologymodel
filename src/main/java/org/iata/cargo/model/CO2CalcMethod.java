@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModelProperty;
  * 
  */
 @OWLClass(iri = Vocabulary.s_c_CO2CalcMethod)
+@Deprecated
 public class CO2CalcMethod
     extends LogisticsObject
     implements Serializable
@@ -54,18 +55,22 @@ public class CO2CalcMethod
     @JsonProperty(Vocabulary.s_p_methodVersion)
     protected String methodVersion;
 
+    @Deprecated
     public void setMethodName(String methodName) {
         this.methodName = methodName;
     }
 
+    @Deprecated
     public String getMethodName() {
         return methodName;
     }
 
+    @Deprecated
     public void setMethodVersion(String methodVersion) {
         this.methodVersion = methodVersion;
     }
 
+    @Deprecated
     public String getMethodVersion() {
         return methodVersion;
     }

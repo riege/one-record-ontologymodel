@@ -37,85 +37,8 @@ public class Booking
     protected Set<String> types;
 
     /**
-     * Carrier details
-     * 
-     */
-    @OWLObjectProperty(iri = Vocabulary.s_p_carrier)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, min = 1, max = -1)
-    })
-    @JsonProperty(Vocabulary.s_p_carrier)
-    protected Set<Company> carrier;
-    /**
-     * Reference to the Carrier products included in the offer
-     * 
-     */
-    @OWLObjectProperty(iri = Vocabulary.s_p_carrierProductInfo)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_carrierProductInfo)
-    protected CarrierProduct carrierProductInfo;
-    /**
-     * Consignee details
-     * 
-     */
-    @OWLObjectProperty(iri = Vocabulary.s_p_consignee)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_consignee)
-    protected Company consignee;
-    /**
-     * Freight Forwarder details
-     * 
-     */
-    @OWLObjectProperty(iri = Vocabulary.s_p_freightForwarder)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, min = 1, max = -1)
-    })
-    @JsonProperty(Vocabulary.s_p_freightForwarder)
-    protected Set<Company> freightForwarder;
-    /**
-     * Other parties to be notified of the booking evolution
-     * 
-     */
-    @OWLObjectProperty(iri = Vocabulary.s_p_notifyParty)
-    @JsonProperty(Vocabulary.s_p_notifyParty)
-    protected Set<Company> notifyParty;
-    /**
-     * Price of the Booking (if different from the offer)
-     * 
-     */
-    @OWLObjectProperty(iri = Vocabulary.s_p_price)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_price)
-    protected Price price;
-    /**
-     * Reference to the Request
-     * 
-     */
-    @OWLObjectProperty(iri = Vocabulary.s_p_requestRef)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_requestRef)
-    protected Request requestRef;
-    /**
-     * Routing details of the offer, to be compared with routing preferences of the quote request
-     * 
-     */
-    @OWLObjectProperty(iri = Vocabulary.s_p_routing)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_routing)
-    protected Routing routing;
-    /**
      * Details of the shipement that is to be shipped
-     * 
+     *
      */
     @OWLObjectProperty(iri = Vocabulary.s_p_shipmentDetails)
     @ParticipationConstraints({
@@ -123,180 +46,84 @@ public class Booking
     })
     @JsonProperty(Vocabulary.s_p_shipmentDetails)
     protected Shipment shipmentDetails;
+
     /**
-     * Shipper information
-     * 
+     * Schedule preferences of the request
+     *
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_shipper)
+    @OWLObjectProperty(iri = Vocabulary.s_p_timePreferences)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_shipper)
-    protected Company shipper;
+    @JsonProperty(Vocabulary.s_p_timePreferences)
+    protected BookingTimes timePreferences;
+
     /**
-     * Transport segment linked to the offer, including the Departure and Arrival locations
-     * 
+     * Unit preferences of the request (e.g. kg or cm)
+     *
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_transportMovement)
+    @OWLObjectProperty(iri = Vocabulary.s_p_unitsPreference)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_transportMovement)
-    protected TransportSegment transportMovement;
+    @JsonProperty(Vocabulary.s_p_unitsPreference)
+    protected Value unitsPreference;
+
     /**
-     * House or Master Waybill unique identifier
-     * 
+     * Reference to the Allotment as per the contracts between forwarders and carriers
+     *
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_waybillNumber)
+    @OWLDataProperty(iri = Vocabulary.s_p_allotment)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_waybillNumber)
-    protected Waybill waybillNumber;
+    @JsonProperty(Vocabulary.s_p_allotment)
+    protected String allotment;
+
     /**
-     * Status of the Booking with regards to the step in the Quote and Book process: Quoted, Booked
-     * 
+     * Expected commodity for quote request purposes only. To be defined by MCD
+     *
      */
-    @OWLDataProperty(iri = Vocabulary.s_p_bookingStatus)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral", max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_bookingStatus)
-    protected String bookingStatus;
+    @OWLDataProperty(iri = Vocabulary.s_p_expectedCommodities)
+    @JsonProperty(Vocabulary.s_p_expectedCommodities)
+    protected Set<String> expectedCommodities;
     /**
-     * Latest Acceptance time as per CargoIQ definition
-     * 
+     * Identification of the request type: Quote or Booking (to be confirmed)
+     *
      */
-    @OWLDataProperty(iri = Vocabulary.s_p_latestAcceptanceTime)
+    @OWLDataProperty(iri = Vocabulary.s_p_requestType)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_latestAcceptanceTime)
-    protected Date latestAcceptanceTime;
+    @JsonProperty(Vocabulary.s_p_requestType)
+    protected String requestType;
     /**
-     * Indicates if the offer is a perfect match to the quote request (boolean)
-     * 
+     * Requested handling information for quote request purposes only
+     *
      */
-    @OWLDataProperty(iri = Vocabulary.s_p_requestMatchInd)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#boolean", max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_requestMatchInd)
-    protected Boolean requestMatchInd;
+    @OWLDataProperty(iri = Vocabulary.s_p_requestedHandling)
+    @JsonProperty(Vocabulary.s_p_requestedHandling)
+    protected Set<String> requestedHandling;
     /**
-     * Indicate the secruty state of the shipment, screened or not
-     * 
+     * Indicate the security state of the shipment, screened or not
+     *
      */
-    @OWLDataProperty(iri = Vocabulary.s_p_shipmentSecurityStatus)
+    @OWLDataProperty(iri = Vocabulary.s_p_shipmentSecurityStatus_A)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral", max = 1)
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_shipmentSecurityStatus)
+    @JsonProperty(Vocabulary.s_p_shipmentSecurityStatus_A)
     protected String shipmentSecurityStatus;
-    /**
-     * Time of availability of the shipment as per CargoIQ definition
-     * 
-     */
-    @OWLDataProperty(iri = Vocabulary.s_p_timeOfAvailability)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_timeOfAvailability)
-    protected Date timeOfAvailability;
-    /**
-     * Total transit time as per CargoIQ definition
-     * 
-     */
-    @OWLDataProperty(iri = Vocabulary.s_p_totalTransitTime)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral", max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_totalTransitTime)
-    protected String totalTransitTime;
+
 
     @Deprecated
-    public void setCarrier(Set<Company> carrier) {
-        this.carrier = carrier;
+    public Set<String> getTypes() {
+        return types;
     }
 
     @Deprecated
-    public Set<Company> getCarrier() {
-        return carrier;
-    }
-
-    @Deprecated
-    public void setCarrierProductInfo(CarrierProduct carrierProductInfo) {
-        this.carrierProductInfo = carrierProductInfo;
-    }
-
-    @Deprecated
-    public CarrierProduct getCarrierProductInfo() {
-        return carrierProductInfo;
-    }
-
-    @Deprecated
-    public void setConsignee(Company consignee) {
-        this.consignee = consignee;
-    }
-
-    @Deprecated
-    public Company getConsignee() {
-        return consignee;
-    }
-
-    @Deprecated
-    public void setFreightForwarder(Set<Company> freightForwarder) {
-        this.freightForwarder = freightForwarder;
-    }
-
-    @Deprecated
-    public Set<Company> getFreightForwarder() {
-        return freightForwarder;
-    }
-
-    @Deprecated
-    public void setNotifyParty(Set<Company> notifyParty) {
-        this.notifyParty = notifyParty;
-    }
-
-    @Deprecated
-    public Set<Company> getNotifyParty() {
-        return notifyParty;
-    }
-
-    @Deprecated
-    public void setPrice(Price price) {
-        this.price = price;
-    }
-
-    @Deprecated
-    public Price getPrice() {
-        return price;
-    }
-
-    @Deprecated
-    public void setRequestRef(Request requestRef) {
-        this.requestRef = requestRef;
-    }
-
-    @Deprecated
-    public Request getRequestRef() {
-        return requestRef;
-    }
-
-    @Deprecated
-    public void setRouting(Routing routing) {
-        this.routing = routing;
-    }
-
-    @Deprecated
-    public Routing getRouting() {
-        return routing;
-    }
-
-    @Deprecated
-    public void setShipmentDetails(Shipment shipmentDetails) {
-        this.shipmentDetails = shipmentDetails;
+    public void setTypes(Set<String> types) {
+        this.types = types;
     }
 
     @Deprecated
@@ -305,68 +132,68 @@ public class Booking
     }
 
     @Deprecated
-    public void setShipper(Company shipper) {
-        this.shipper = shipper;
+    public void setShipmentDetails(Shipment shipmentDetails) {
+        this.shipmentDetails = shipmentDetails;
     }
 
     @Deprecated
-    public Company getShipper() {
-        return shipper;
+    public BookingTimes getTimePreferences() {
+        return timePreferences;
     }
 
     @Deprecated
-    public void setTransportMovement(TransportSegment transportMovement) {
-        this.transportMovement = transportMovement;
+    public void setTimePreferences(BookingTimes timePreferences) {
+        this.timePreferences = timePreferences;
     }
 
     @Deprecated
-    public TransportSegment getTransportMovement() {
-        return transportMovement;
+    public Value getUnitsPreference() {
+        return unitsPreference;
     }
 
     @Deprecated
-    public void setWaybillNumber(Waybill waybillNumber) {
-        this.waybillNumber = waybillNumber;
+    public void setUnitsPreference(Value unitsPreference) {
+        this.unitsPreference = unitsPreference;
     }
 
     @Deprecated
-    public Waybill getWaybillNumber() {
-        return waybillNumber;
+    public String getAllotment() {
+        return allotment;
     }
 
     @Deprecated
-    public void setBookingStatus(String bookingStatus) {
-        this.bookingStatus = bookingStatus;
+    public void setAllotment(String allotment) {
+        this.allotment = allotment;
     }
 
     @Deprecated
-    public String getBookingStatus() {
-        return bookingStatus;
+    public Set<String> getExpectedCommodities() {
+        return expectedCommodities;
     }
 
     @Deprecated
-    public void setLatestAcceptanceTime(Date latestAcceptanceTime) {
-        this.latestAcceptanceTime = latestAcceptanceTime;
+    public void setExpectedCommodities(Set<String> expectedCommodities) {
+        this.expectedCommodities = expectedCommodities;
     }
 
     @Deprecated
-    public Date getLatestAcceptanceTime() {
-        return latestAcceptanceTime;
+    public String getRequestType() {
+        return requestType;
     }
 
     @Deprecated
-    public void setRequestMatchInd(Boolean requestMatchInd) {
-        this.requestMatchInd = requestMatchInd;
+    public void setRequestType(String requestType) {
+        this.requestType = requestType;
     }
 
     @Deprecated
-    public Boolean getRequestMatchInd() {
-        return requestMatchInd;
+    public Set<String> getRequestedHandling() {
+        return requestedHandling;
     }
 
     @Deprecated
-    public void setShipmentSecurityStatus(String shipmentSecurityStatus) {
-        this.shipmentSecurityStatus = shipmentSecurityStatus;
+    public void setRequestedHandling(Set<String> requestedHandling) {
+        this.requestedHandling = requestedHandling;
     }
 
     @Deprecated
@@ -375,31 +202,8 @@ public class Booking
     }
 
     @Deprecated
-    public void setTimeOfAvailability(Date timeOfAvailability) {
-        this.timeOfAvailability = timeOfAvailability;
-    }
-
-    @Deprecated
-    public Date getTimeOfAvailability() {
-        return timeOfAvailability;
-    }
-
-    @Deprecated
-    public void setTotalTransitTime(String totalTransitTime) {
-        this.totalTransitTime = totalTransitTime;
-    }
-
-    @Deprecated
-    public String getTotalTransitTime() {
-        return totalTransitTime;
-    }
-
-    public Set<String> getTypes() {
-        return types;
-    }
-
-    public void setTypes(Set<String> types) {
-        this.types = types;
+    public void setShipmentSecurityStatus(String shipmentSecurityStatus) {
+        this.shipmentSecurityStatus = shipmentSecurityStatus;
     }
 
 }

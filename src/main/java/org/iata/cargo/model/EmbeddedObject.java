@@ -1,6 +1,8 @@
 
 package org.iata.cargo.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;
@@ -15,6 +17,7 @@ import cz.cvut.kbss.jopa.model.annotations.Types;
 import cz.cvut.kbss.jopa.vocabulary.RDFS;
 import org.iata.cargo.Vocabulary;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -30,14 +33,19 @@ public class EmbeddedObject
 {
 
     @Id(generated = true)
+    @ApiModelProperty(readOnly = true)
     protected String id;
     @OWLAnnotationProperty(iri = RDFS.LABEL)
+    @JsonIgnore
     protected String name;
     @OWLAnnotationProperty(iri = cz.cvut.kbss.jopa.vocabulary.DC.Elements.DESCRIPTION)
+    @JsonIgnore
     protected String description;
     @Types
+    @JsonProperty("@type")
     protected Set<String> types;
     @Properties
+    @JsonIgnore
     protected Map<String, Set<String>> properties;
     /**
      * Company identifier from the Internet of Logistics of the entity that hosts the Embedded Object.

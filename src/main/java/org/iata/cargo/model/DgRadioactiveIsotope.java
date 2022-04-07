@@ -59,8 +59,8 @@ public class DgRadioactiveIsotope
      */
     @OWLDataProperty(iri = Vocabulary.s_p_isotopeId)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1),
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1)
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1),
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
     })
     @JsonProperty(Vocabulary.s_p_isotopeId)
     protected String isotopeId;
