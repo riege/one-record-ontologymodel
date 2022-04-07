@@ -69,8 +69,8 @@ public class Product
      * Other product identifier (e.g. Bar code, UPC, EAN, Amazon)
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_otherIdentifier)
-    @JsonProperty(Vocabulary.s_p_otherIdentifier)
+    @OWLObjectProperty(iri = Vocabulary.s_p_otherIdentifier_A)
+    @JsonProperty(Vocabulary.s_p_otherIdentifier_A)
     protected Set<OtherIdentifier> otherIdentifier;
     /**
      * Indicates the specific commodity on which the rate class code is applied

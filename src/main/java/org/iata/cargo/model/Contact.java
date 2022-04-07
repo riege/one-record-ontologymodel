@@ -57,6 +57,16 @@ public class Contact
     protected String language;
 
     /**
+     * Other contact options e.g. Skype, Whatsapp, Viber, Fax etc
+     * 
+     */
+    @OWLObjectProperty(iri = Vocabulary.s_p_other)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_other)
+    protected ContactOther other;
+    /**
      * Type of the contact details, e.g. Phone number, Mail address
      * 
      */
@@ -120,6 +130,14 @@ public class Contact
     @Override
     public String toString() {
         return ((((("Contact {"+ name)+"<")+ id)+">")+"}");
+    }
+
+    public void setOther(ContactOther other) {
+        this.other = other;
+    }
+
+    public ContactOther getOther() {
+        return other;
     }
 
     public void setContactType(String contactType) {

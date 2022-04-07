@@ -46,6 +46,15 @@ public class Waybill
     @JsonProperty(Vocabulary.s_p_booking)
     protected BookingOption booking;
     /**
+     * Refers to the Booking 
+     * 
+     */
+    @OWLObjectProperty(iri = Vocabulary.s_p_bookingRef_A)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
+    })
+    protected Booking bookingRef;
+    /**
      * Location of individual or company involved in the movement of a consignment or Coded representation of a specific airport/city code
      * 
      */
@@ -163,7 +172,7 @@ public class Waybill
      * House or Master Waybill unique identifier
      * 
      */
-    @OWLDataProperty(iri = Vocabulary.s_p_waybillNumber_A_A)
+    @OWLDataProperty(iri = Vocabulary.s_p_waybillNumber_A_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1),
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
@@ -197,6 +206,14 @@ public class Waybill
 
     public BookingOption getBooking() {
         return booking;
+    }
+
+    public void setBookingRef(Booking bookingRef) {
+        this.bookingRef = bookingRef;
+    }
+
+    public Booking getBookingRef() {
+        return bookingRef;
     }
 
     public void setCarrierDeclarationPlace(Location carrierDeclarationPlace) {

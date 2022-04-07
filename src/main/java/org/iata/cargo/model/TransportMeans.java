@@ -48,11 +48,11 @@ public class TransportMeans
      * Transport Movement on which the Transport Means is used
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_transportMovement_A_A_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_transportMovement_A_A_A_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_transportMovement_A_A_A)
+    @JsonProperty(Vocabulary.s_p_transportMovement_A_A_A_A_A)
     protected TransportMovement transportMovement;
     /**
      * Associated transport segment

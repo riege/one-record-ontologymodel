@@ -46,6 +46,15 @@ public class TransportSegment
     @JsonProperty(Vocabulary.s_p_arrivalLocation_A_A)
     protected Location arrivalLocation;
     /**
+     * Method of calculation of the CO2 emissions
+     * 
+     */
+    @OWLObjectProperty(iri = Vocabulary.s_p_co2CalculationMethod)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
+    })
+    protected CO2CalcMethod co2CalculationMethod;
+    /**
      * Amount of CO2 emitted (e.g. 34 kg/km)
      * 
      */
@@ -213,6 +222,14 @@ public class TransportSegment
     }
 
     @Deprecated
+    public void setCo2CalculationMethod(CO2CalcMethod co2CalculationMethod) {
+        this.co2CalculationMethod = co2CalculationMethod;
+    }
+
+    public CO2CalcMethod getCo2CalculationMethod() {
+        return co2CalculationMethod;
+    }
+
     public void setCo2Emissions(Set<CO2Emissions> co2Emissions) {
         this.co2Emissions = co2Emissions;
     }

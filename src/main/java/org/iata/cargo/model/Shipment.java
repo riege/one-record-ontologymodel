@@ -77,8 +77,8 @@ public class Shipment
      * Parties details
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_parties_A_A_A)
-    @JsonProperty(Vocabulary.s_p_parties_A_A_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_parties_A_A_A_A)
+    @JsonProperty(Vocabulary.s_p_parties_A_A_A_A)
     protected Set<Party> parties;
     /**
      * Weight details
@@ -105,12 +105,12 @@ public class Shipment
      * Waybill unique identifier (AWB or HWB)
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_waybillNumber_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_waybillNumber_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, min = 1, max = -1),
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_waybillNumber_A)
+    @JsonProperty(Vocabulary.s_p_waybillNumber_A_A)
     protected Waybill waybillNumber;
     /**
      * he date at which the delivery is supposed to happen. Format is YYYYMMDD.

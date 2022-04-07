@@ -72,11 +72,11 @@ public class Event
      * Location of event
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_location_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_location_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_location_A)
+    @JsonProperty(Vocabulary.s_p_location_A_A)
     protected Location location;
     /**
      * Party performing the event

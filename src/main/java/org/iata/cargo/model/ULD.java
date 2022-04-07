@@ -62,8 +62,8 @@ public class ULD
      * Segment related to the ULD movement
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_transportSegments)
-    @JsonProperty(Vocabulary.s_p_transportSegments)
+    @OWLObjectProperty(iri = Vocabulary.s_p_transportSegments_A)
+    @JsonProperty(Vocabulary.s_p_transportSegments_A)
     protected Set<TransportSegment> transportSegments;
     /**
      * Details of contained (virtual) piece(s)

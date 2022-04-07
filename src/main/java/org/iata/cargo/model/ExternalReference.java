@@ -71,11 +71,11 @@ public class ExternalReference
      * Location of the document, e.g. location where the document was emitted
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_location_A_A)
+    @OWLObjectProperty(iri = Vocabulary.s_p_location_A_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_location_A_A)
+    @JsonProperty(Vocabulary.s_p_location_A_A_A)
     protected Location location;
     /**
      * Checksum of the document to validate its integrity

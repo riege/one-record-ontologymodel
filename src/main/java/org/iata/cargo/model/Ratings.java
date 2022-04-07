@@ -42,7 +42,7 @@ public class Ratings
     @JsonProperty(Vocabulary.s_p_ranges)
     protected Set<Ranges> ranges;
     /**
-     * Billig charge identifiers to be used for CASS. Refer to CargoXML Code List 1.33
+     * Billing charge identifiers to be used for CASS. Refer to CargoXML Code List 1.33
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_billingChargeIdentifier)

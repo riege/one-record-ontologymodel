@@ -39,90 +39,60 @@ public class Request
      * Parties involved if known
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_parties)
+    @OWLObjectProperty(iri = Vocabulary.s_p_parties_A_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_parties)
-    protected Party parties;
+    @JsonProperty(Vocabulary.s_p_parties_A_A_A)
+    protected OtherParty parties;
     /**
      * Ratings preferences of the request
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_ratingsPreference)
+    @OWLObjectProperty(iri = Vocabulary.s_p_ratingsPreference_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_ratingsPreference)
+    @JsonProperty(Vocabulary.s_p_ratingsPreference_A)
     protected Ratings ratingsPreference;
     /**
      * Details of the shipement that is to be shipped
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_shipmentDetails)
+    @OWLObjectProperty(iri = Vocabulary.s_p_shipmentDetails_A_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_shipmentDetails)
+    @JsonProperty(Vocabulary.s_p_shipmentDetails_A_A_A)
     protected Shipment shipmentDetails;
     /**
      * Transport segment linked to the request, including the Departure and Arrival locations requested
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_transportMovement)
+    @OWLObjectProperty(iri = Vocabulary.s_p_transportMovement_A_A_A_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_transportMovement)
+    @JsonProperty(Vocabulary.s_p_transportMovement_A_A_A_A)
     protected TransportSegment transportMovement;
     /**
      * Unit preferences of the request (e.g. kg or cm)
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_unitsPreference)
+    @OWLObjectProperty(iri = Vocabulary.s_p_unitsPreference_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_unitsPreference)
+    @JsonProperty(Vocabulary.s_p_unitsPreference_A)
     protected Value unitsPreference;
-    /**
-     * Reference to the Allotment as per the contracts between forwarders and carriers
-     * 
-     */
-    @OWLDataProperty(iri = Vocabulary.s_p_allotment)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_allotment)
-    protected String allotment;
-    /**
-     * Identification of the request type: Quote or Booking
-     * 
-     */
-    @OWLDataProperty(iri = Vocabulary.s_p_requestType)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_requestType)
-    protected String requestType;
-    /**
-     * Indicate the security state of the shipment, screened or not
-     * 
-     */
-    @OWLDataProperty(iri = Vocabulary.s_p_shipmentSecurityStatus)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
-    })
-    @JsonProperty(Vocabulary.s_p_shipmentSecurityStatus)
-    protected String shipmentSecurityStatus;
 
     @Deprecated
-    public void setParties(Party parties) {
+    public void setParties(OtherParty parties) {
         this.parties = parties;
     }
 
     @Deprecated
-    public Party getParties() {
+    public OtherParty getParties() {
         return parties;
     }
 
@@ -164,36 +134,6 @@ public class Request
     @Deprecated
     public Value getUnitsPreference() {
         return unitsPreference;
-    }
-
-    @Deprecated
-    public void setAllotment(String allotment) {
-        this.allotment = allotment;
-    }
-
-    @Deprecated
-    public String getAllotment() {
-        return allotment;
-    }
-
-    @Deprecated
-    public void setRequestType(String requestType) {
-        this.requestType = requestType;
-    }
-
-    @Deprecated
-    public String getRequestType() {
-        return requestType;
-    }
-
-    @Deprecated
-    public void setShipmentSecurityStatus(String shipmentSecurityStatus) {
-        this.shipmentSecurityStatus = shipmentSecurityStatus;
-    }
-
-    @Deprecated
-    public String getShipmentSecurityStatus() {
-        return shipmentSecurityStatus;
     }
 
     @Deprecated

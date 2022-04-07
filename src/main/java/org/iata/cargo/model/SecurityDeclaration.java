@@ -143,12 +143,12 @@ public class SecurityDeclaration
      * Security status indicator (CXML 1.103) - e.g. SPX- Cargo Secure for Passenger and All-Cargo Aircraft 
      * 
      */
-    @OWLDataProperty(iri = Vocabulary.s_p_securityStatus)
+    @OWLDataProperty(iri = Vocabulary.s_p_securityStatus_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1),
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1)
     })
-    @JsonProperty(Vocabulary.s_p_securityStatus)
+    @JsonProperty(Vocabulary.s_p_securityStatus_A)
     protected String securityStatus;
 
     public void setIssuedBy(Person issuedBy) {

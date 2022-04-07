@@ -53,27 +53,24 @@ public class CompanyBranch
      * Refers to the mother company of the branch
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_company)
+    @OWLObjectProperty(iri = Vocabulary.s_p_company_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_company)
+    @JsonProperty(Vocabulary.s_p_company_A)
     protected Company company;
     /**
      * Contact person details
      * 
      */
     @OWLObjectProperty(iri = Vocabulary.s_p_contactPersons)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
-    })
     @JsonProperty(Vocabulary.s_p_contactPersons)
     protected Set<Person> contactPersons;
     /**
      * Location and address details
      * 
      */
-    @OWLObjectProperty(iri = Vocabulary.s_p_location)
+    @OWLObjectProperty(iri = Vocabulary.s_p_location_A)
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
@@ -84,9 +81,6 @@ public class CompanyBranch
      * 
      */
     @OWLObjectProperty(iri = Vocabulary.s_p_otherIdentifiers)
-    @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
-    })
     @JsonProperty(Vocabulary.s_p_otherIdentifiers)
     protected Set<OtherIdentifier> otherIdentifiers;
     /**

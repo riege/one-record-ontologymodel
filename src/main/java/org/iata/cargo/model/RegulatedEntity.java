@@ -67,7 +67,7 @@ public class RegulatedEntity
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, min = 1, max = -1)
     })
     @JsonProperty(Vocabulary.s_p_entity)
-    protected CompanyBranch entity;
+    protected Branch entity;
     /**
      * Regulated entity identifier (e.g. Regulated Agent Identifier) is mandatory
      * 
@@ -145,11 +145,11 @@ public class RegulatedEntity
         return ((((("RegulatedEntity {"+ name)+"<")+ id)+">")+"}");
     }
 
-    public void setEntity(CompanyBranch entity) {
+    public void setEntity(Branch entity) {
         this.entity = entity;
     }
 
-    public CompanyBranch getEntity() {
+    public Branch getEntity() {
         return entity;
     }
 
