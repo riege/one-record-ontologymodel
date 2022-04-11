@@ -20,6 +20,8 @@ echo $OLD_ONTOLOGY_URL
 echo "to (new)"
 echo $NEW_ONTOLOGY_URL
 echo ""
+echo "(Optional parameters for raw URLs: 1st=old, 2nd=new)"
+echo ""
 echo -n "Press ENTER to start "
 read DUMMY
 

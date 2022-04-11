@@ -45,7 +45,9 @@ public class CustomsInfo
     @JsonProperty(Vocabulary.s_p_piece)
     protected Piece piece;
     /**
-     * Customs content code. Refer CXML Code List 1.100, e.g. IST - Security Textual StatementNumber, M - Movement Reference Number
+     * Customs, Security and Regulatory Control Information Identifier. Coded indicator qualifying Customs related information: Item Number "I", Exemption Legend "L", System Downtime Reference "S", Unique Consignment Reference Number "U", Movement Reference Number "M" .
+     * Refers to Code List 1.100
+     * Condition: At least one of the three elements (Country Code, Information Identifier or Customs, Security and Regulatory Control Information Identifier) must be completed
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_customsInfoContentCode)
@@ -55,7 +57,17 @@ public class CustomsInfo
     @JsonProperty(Vocabulary.s_p_customsInfoContentCode)
     protected String customsInfoContentCode;
     /**
-     * Free text for customs remarks
+     * Customs country code. Refer ISO 3166-2
+     * Condition:  At least one of the three elements (Country Code, Information Identifier or Customs, Security and Regulatory Control Information Identifier) must be completed
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_customsInfoCountryCode)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
+    })
+    protected String customsInfoCountryCode;
+    /**
+     * Free text for customs remarks, not used in OCI Composition Rules Table
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_customsInfoNote)
@@ -65,7 +77,8 @@ public class CustomsInfo
     @JsonProperty(Vocabulary.s_p_customsInfoNote)
     protected String customsInfoNote;
     /**
-     * Customs subject code. Refer CXML Code List 1.19, e.g. IMP for import, EXP for export, AGT for Agent, ISS for The Regulated Agent Issuing the Security Status for rdf:type Consignment etc.   At least one of the three elements (Country Code, Information Identifier or Customs, Security and Regulatory Control Information Identifier) must be completed
+     * Information Identifier. Code identifying a piece of information/entity e.g. "IMP" for import, "EXP" for export, "AGT" for Agent, "ISS" for The Regulated Agent Issuing the Security Status for a Consignment etc. 
+     * Condition: At least one of the three elements (Country Code, Information Identifier or Customs, Security and Regulatory Control Information Identifier) must be completed
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_customsInfoSubjectCode)
@@ -75,7 +88,7 @@ public class CustomsInfo
     @JsonProperty(Vocabulary.s_p_customsInfoSubjectCode)
     protected String customsInfoSubjectCode;
     /**
-     * Information for customs submission
+     * Supplementary Customs, Security and Regulatory Control Information
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_customsInformation)
@@ -99,6 +112,14 @@ public class CustomsInfo
 
     public String getCustomsInfoContentCode() {
         return customsInfoContentCode;
+    }
+
+    public void setCustomsInfoCountryCode(String customsInfoCountryCode) {
+        this.customsInfoCountryCode = customsInfoCountryCode;
+    }
+
+    public String getCustomsInfoCountryCode() {
+        return customsInfoCountryCode;
     }
 
     public void setCustomsInfoNote(String customsInfoNote) {

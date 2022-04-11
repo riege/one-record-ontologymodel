@@ -113,6 +113,17 @@ public class Waybill
     @JsonProperty(Vocabulary.s_p_consignorDeclarationSignature)
     protected Set<String> consignorDeclarationSignature;
     /**
+     * Code indicating the origin of goods for Customs purposes (e.g. For goods in free circulation in the EU) 
+     * List to be provided by local authorities
+     * 
+     */
+    @OWLDataProperty(iri = Vocabulary.s_p_customsOriginCode)
+    @ParticipationConstraints({
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral", max = 1)
+    })
+    @JsonProperty(Vocabulary.s_p_customsOriginCode)
+    protected String customsOriginCode;
+    /**
      * Charges levied at destination accruing to the last carrier, in destination currency
      * 
      */
@@ -263,6 +274,14 @@ public class Waybill
 
     public Set<String> getConsignorDeclarationSignature() {
         return consignorDeclarationSignature;
+    }
+
+    public void setCustomsOriginCode(String customsOriginCode) {
+        this.customsOriginCode = customsOriginCode;
+    }
+
+    public String getCustomsOriginCode() {
+        return customsOriginCode;
     }
 
     public void setDestinationCharges(Set<Double> destinationCharges) {

@@ -1931,31 +1931,35 @@ public class Vocabulary {
     public final static String s_p_countryName = "https://onerecord.iata.org/Country#countryName";
     public final static IRI p_countryName = IRI.create(s_p_countryName);
     /**
-     * Customs content code. Refer CXML Code List 1.100, e.g. IST - Security Textual StatementNumber, M - Movement Reference Number
+     * Customs, Security and Regulatory Control Information Identifier. Coded indicator qualifying Customs related information: Item Number "I", Exemption Legend "L", System Downtime Reference "S", Unique Consignment Reference Number "U", Movement Reference Number "M" .
+     * Refers to Code List 1.100
+     * Condition: At least one of the three elements (Country Code, Information Identifier or Customs, Security and Regulatory Control Information Identifier) must be completed
      * 
      */
     public final static String s_p_customsInfoContentCode = "https://onerecord.iata.org/CustomsInfo#customsInfoContentCode";
     public final static IRI p_customsInfoContentCode = IRI.create(s_p_customsInfoContentCode);
     /**
      * Customs country code. Refer ISO 3166-2
+     * Condition:  At least one of the three elements (Country Code, Information Identifier or Customs, Security and Regulatory Control Information Identifier) must be completed
      * 
      */
     public final static String s_p_customsInfoCountryCode = "https://onerecord.iata.org/CustomsInfo#customsInfoCountryCode";
     public final static IRI p_customsInfoCountryCode = IRI.create(s_p_customsInfoCountryCode);
     /**
-     * Free text for customs remarks
+     * Free text for customs remarks, not used in OCI Composition Rules Table
      * 
      */
     public final static String s_p_customsInfoNote = "https://onerecord.iata.org/CustomsInfo#customsInfoNote";
     public final static IRI p_customsInfoNote = IRI.create(s_p_customsInfoNote);
     /**
-     * Customs subject code. Refer CXML Code List 1.19, e.g. IMP for import, EXP for export, AGT for Agent, ISS for The Regulated Agent Issuing the Security Status for rdf:type Consignment etc.   At least one of the three elements (Country Code, Information Identifier or Customs, Security and Regulatory Control Information Identifier) must be completed
+     * Information Identifier. Code identifying a piece of information/entity e.g. "IMP" for import, "EXP" for export, "AGT" for Agent, "ISS" for The Regulated Agent Issuing the Security Status for a Consignment etc. 
+     * Condition: At least one of the three elements (Country Code, Information Identifier or Customs, Security and Regulatory Control Information Identifier) must be completed
      * 
      */
     public final static String s_p_customsInfoSubjectCode = "https://onerecord.iata.org/CustomsInfo#customsInfoSubjectCode";
     public final static IRI p_customsInfoSubjectCode = IRI.create(s_p_customsInfoSubjectCode);
     /**
-     * Information for customs submission
+     * Supplementary Customs, Security and Regulatory Control Information
      * 
      */
     public final static String s_p_customsInformation = "https://onerecord.iata.org/CustomsInfo#customsInformation";
@@ -3361,6 +3365,13 @@ public class Vocabulary {
      */
     public final static String s_p_consignorDeclarationSignature = "https://onerecord.iata.org/Waybill#consignorDeclarationSignature";
     public final static IRI p_consignorDeclarationSignature = IRI.create(s_p_consignorDeclarationSignature);
+    /**
+     * Code indicating the origin of goods for Customs purposes (e.g. For goods in free circulation in the EU) 
+     * List to be provided by local authorities
+     * 
+     */
+    public final static String s_p_customsOriginCode = "https://onerecord.iata.org/Waybill#customsOriginCode";
+    public final static IRI p_customsOriginCode = IRI.create(s_p_customsOriginCode);
     /**
      * Charges levied at destination accruing to the last carrier, in destination currency
      * 
