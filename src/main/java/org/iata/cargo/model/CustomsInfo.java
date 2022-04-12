@@ -65,6 +65,7 @@ public class CustomsInfo
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
     })
+    @JsonProperty(Vocabulary.s_p_customsInfoCountryCode)
     protected String customsInfoCountryCode;
     /**
      * Free text for customs remarks, not used in OCI Composition Rules Table

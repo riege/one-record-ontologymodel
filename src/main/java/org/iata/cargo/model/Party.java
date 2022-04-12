@@ -51,6 +51,13 @@ public class Party
     @JsonIgnore
     protected Map<String, Set<String>> properties;
     /**
+     * Reference to other identifiers for parties. In the context of the AWB, otherIdentifier object can be used with types "PrimaryID" (internal ID), "Additional ID" (Standard ID) or "AccountID" (Account numbers).
+     * 
+     */
+    @OWLObjectProperty(iri = Vocabulary.s_p_otherIdentifiers_A_A)
+    @JsonProperty(Vocabulary.s_p_otherIdentifiers_A_A)
+    protected Set<OtherIdentifier> otherIdentifiers;
+    /**
      * Reference to the Company
      * 
      */
@@ -114,6 +121,14 @@ public class Party
     @Override
     public String toString() {
         return ((((("Party {"+ name)+"<")+ id)+">")+"}");
+    }
+
+    public void setOtherIdentifiers(Set<OtherIdentifier> otherIdentifiers) {
+        this.otherIdentifiers = otherIdentifiers;
+    }
+
+    public Set<OtherIdentifier> getOtherIdentifiers() {
+        return otherIdentifiers;
     }
 
     public void setPartyDetails(Company partyDetails) {

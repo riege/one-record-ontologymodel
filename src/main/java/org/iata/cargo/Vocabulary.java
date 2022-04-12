@@ -1065,6 +1065,12 @@ public class Vocabulary {
     public final static String s_p_piece_A = "https://onerecord.iata.org/PackagingType#piece";
     public final static IRI p_piece_A = IRI.create(s_p_piece_A);
     /**
+     * Reference to other identifiers for parties. In the context of the AWB, otherIdentifier object can be used with types "PrimaryID" (internal ID), "Additional ID" (Standard ID) or "AccountID" (Account numbers).
+     * 
+     */
+    public final static String s_p_otherIdentifiers_A_A = "https://onerecord.iata.org/Party#otherIdentifiers";
+    public final static IRI p_otherIdentifiers_A_A = IRI.create(s_p_otherIdentifiers_A_A);
+    /**
      * Reference to the Company
      * 
      */
@@ -1134,8 +1140,8 @@ public class Vocabulary {
      * Other piece identification ( e.g. Shipping Marks, Seal)
      * 
      */
-    public final static String s_p_otherIdentifiers_A_A = "https://onerecord.iata.org/Piece#otherIdentifiers";
-    public final static IRI p_otherIdentifiers_A_A = IRI.create(s_p_otherIdentifiers_A_A);
+    public final static String s_p_otherIdentifiers_A_A_A = "https://onerecord.iata.org/Piece#otherIdentifiers";
+    public final static IRI p_otherIdentifiers_A_A_A = IRI.create(s_p_otherIdentifiers_A_A_A);
     /**
      * Other party company details - e.g. the party to be notified
      * 

@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.iata.cargo.Vocabulary;
+import org.iata.cargo.codelists.OtherIdentifierTypeCode;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -127,6 +128,12 @@ public class OtherIdentifier
 
     public String getIdentifier() {
         return identifier;
+    }
+
+    /* Convenience typesafe setter */
+    public void setOtherIdentifierType(OtherIdentifierTypeCode otherIdentifierType) {
+        this.otherIdentifierType = otherIdentifierType == null
+            ? null : otherIdentifierType.code();
     }
 
     public void setOtherIdentifierType(String otherIdentifierType) {

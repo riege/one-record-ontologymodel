@@ -152,18 +152,18 @@ public class HandlingInstructions
         return serviceDescription;
     }
 
+    /* Convenience typesafe setter */
+    public void setServiceType(HandlingInstructionsServiceTypeCode serviceType) {
+        this.serviceType = serviceType == null
+            ? null : serviceType.code();
+    }
+
     public void setServiceType(String serviceType) {
         this.serviceType = serviceType;
     }
 
     public String getServiceType() {
         return serviceType;
-    }
-
-    /* Convenience typesafe setter */
-    public void setServiceTypeCode(HandlingInstructionsServiceTypeCode serviceType) {
-        this.serviceTypeCode = serviceType == null
-            ? null : serviceType.code();
     }
 
     public void setServiceTypeCode(String serviceTypeCode) {
