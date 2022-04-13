@@ -11,7 +11,8 @@ mkdir  $TEMP/patchontololy
 cd     $TEMP/patchontololy
 
 # "one" ontology here means the endorsed June-2021 version
-[ "$1" != "" ] && OLD_ONTOLOGY_URL=$1 || OLD_ONTOLOGY_URL=https://raw.githubusercontent.com/IATA-Cargo/ONE-Record/master/June-2021-standard-COTB-endorsed/Data-Model/IATA-1R-DM-Ontology-vCOTB-Jun2021.ttl
+# [ "$1" != "" ] && OLD_ONTOLOGY_URL=$1 || OLD_ONTOLOGY_URL=https://raw.githubusercontent.com/IATA-Cargo/ONE-Record/master/June-2021-standard-COTB-endorsed/Data-Model/IATA-1R-DM-Ontology-vCOTB-Jun2021.ttl
+[ "$1" != "" ] && OLD_ONTOLOGY_URL=$1 || OLD_ONTOLOGY_URL=https://raw.githubusercontent.com/IATA-Cargo/ONE-Record/d58ccaf1d22ac6df5145af67979dc1bb31ee6666/working_draft/ontology/IATA-1R-DM-Ontology.ttl
 # "new" ontology here means the working_draft version
 [ "$2" != "" ] && NEW_ONTOLOGY_URL=$2 || NEW_ONTOLOGY_URL=https://raw.githubusercontent.com/IATA-Cargo/ONE-Record/master/working_draft/ontology/IATA-1R-DM-Ontology.ttl
 

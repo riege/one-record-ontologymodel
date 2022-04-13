@@ -62,8 +62,8 @@ public class Measurements
      */
     @OWLDataProperty(iri = Vocabulary.s_p_measurementTimestamp)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1),
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", min = 1, max = -1)
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", min = 1, max = -1),
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
     })
     @JsonProperty(Vocabulary.s_p_measurementTimestamp)
     protected Date measurementTimestamp;

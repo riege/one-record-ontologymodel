@@ -77,8 +77,8 @@ public class ScheduledLegs
      */
     @OWLDataProperty(iri = Vocabulary.s_p_sequenceNumber)
     @ParticipationConstraints({
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#integer", min = 1, max = -1),
-        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#integer", max = 1)
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#integer", max = 1),
+        @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#integer", min = 1, max = -1)
     })
     protected Integer sequenceNumber;
     /**

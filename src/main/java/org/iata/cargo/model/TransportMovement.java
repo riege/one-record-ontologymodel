@@ -105,6 +105,13 @@ public class TransportMovement
     @JsonProperty(Vocabulary.s_p_fuelAmountMeasured)
     protected Value fuelAmountMeasured;
     /**
+     * Reference to all Movement Times such as Departure, Arrival, etc.
+     * 
+     */
+    @OWLObjectProperty(iri = Vocabulary.s_p_movementTimes)
+    @JsonProperty(Vocabulary.s_p_movementTimes)
+    protected Set<MovementTimes> movementTimes;
+    /**
      * Actual payload for the transport
      * 
      */
@@ -266,6 +273,14 @@ public class TransportMovement
 
     public Value getFuelAmountMeasured() {
         return fuelAmountMeasured;
+    }
+
+    public void setMovementTimes(Set<MovementTimes> movementTimes) {
+        this.movementTimes = movementTimes;
+    }
+
+    public Set<MovementTimes> getMovementTimes() {
+        return movementTimes;
     }
 
     public void setPayload(Set<Value> payload) {

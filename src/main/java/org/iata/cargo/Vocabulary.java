@@ -1581,6 +1581,12 @@ public class Vocabulary {
     public final static String s_p_fuelAmountMeasured = "https://onerecord.iata.org/TransportMovement#fuelAmountMeasured";
     public final static IRI p_fuelAmountMeasured = IRI.create(s_p_fuelAmountMeasured);
     /**
+     * Reference to all Movement Times such as Departure, Arrival, etc.
+     * 
+     */
+    public final static String s_p_movementTimes = "https://onerecord.iata.org/TransportMovement#movementTimes";
+    public final static IRI p_movementTimes = IRI.create(s_p_movementTimes);
+    /**
      * Actual payload for the transport
      * 
      */
