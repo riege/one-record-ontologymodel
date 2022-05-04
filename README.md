@@ -36,10 +36,15 @@ approved various Ontology versions.
 Ontologies prior [version 1.1](https://github.com/IATA-Cargo/ONE-Record/tree/master/June-2021-standard-COTB-endorsed)
 have not been covered enought data fields required used by forwarders in the CargoIMP/XMP (X)FWB.
 
-This project aims to keeps it's releases and versioning in synchronization with the IATA Ontologies, starting with IATA ONE Record Ontology version 1.1.
+This project aims to keep its releases and versioning in synchronization with the IATA Ontologies, starting with IATA ONE Record Ontology version 1.1.
 
-Update 2021-OCT: On Oct-22th IATA [fixed a bug in Ontology 1.1](https://github.com/IATA-Cargo/ONE-Record/tree/master/June-2021-standard-COTB-endorsed),
-this fix is mirrored in [release 1.1.1](../../releases/tag/1.1.1) of this library.
+| IATA Ontology version / endorsement                                                                      | ONE.Record Ontology-Model Library version                |
+|----------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| 1.1.x / [2021-June](https://github.com/IATA-Cargo/ONE-Record/tree/master/June-2021-standard-COTB-endorsed) | 1.1.x latest: [1.1.2](../../releases/tag/1.1.2) (Note 1) |
+| 2.0.x / [2022-May](https://github.com/IATA-Cargo/ONE-Record/tree/master/May-2022-standard-forCOTBendorsement) | 2.0.x see [2.0.0](../../releases/tag/2.0.0)              |
+
+Note 1: Update for Ontology 1.1 on Oct-22nd 2021, IATA [fixed a bug in Ontology 1.1](https://github.com/IATA-Cargo/ONE-Record/tree/master/June-2021-standard-COTB-endorsed),
+this fix is mirrored since [release 1.1.1](../../releases/tag/1.1.1) of this library.
 
 ## Question and Feedback
 
