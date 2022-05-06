@@ -83,4 +83,6 @@ The patch could be applied to update this project with the ontology changes/diff
 Downloable URLs of the old and new on ontology could be supplied as 1st and 2nd paramter to the script.
 
 ## P.S.
-P.S.: As per 2021-Mar-18, the Ontology has various open issues which are likely to be adopted in upcoming versions e.g., https://github.com/IATA-Cargo/ONE-Record/issues/85 or https://github.com/IATA-Cargo/ONE-Record/issues/111
+As per 2021-Mar-18, the Ontology 1.1 had various open issues which had been adopted in
+version 2.0, which had been essential to reach eAWB compatibility e.g., https://github.com/IATA-Cargo/ONE-Record/issues/85 or 
+https://github.com/IATA-Cargo/ONE-Record/issues/111
