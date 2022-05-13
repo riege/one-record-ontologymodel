@@ -103,6 +103,7 @@ public class Event
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", min = 1, max = -1),
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#dateTime", max = 1)
     })
+    @JsonProperty(Vocabulary.s_p_dateTime)
     protected Date dateTime;
     /**
      * Movement or milestone code. Can refer to CXML Code List 1.18, e.g. DEP, ARR, FOH, RCS but not restricted to it.

@@ -225,7 +225,7 @@ public class BookingOption
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_shipmentSecurityStatus_A)
+    @JsonProperty(Vocabulary.s_p_shipmentSecurityStatus)
     protected String shipmentSecurityStatus;
 
     public void setBookingSegment(BookingSegment bookingSegment) {

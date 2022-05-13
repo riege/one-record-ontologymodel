@@ -38,9 +38,10 @@ public class Company
     @Id(generated = true)
     @ApiModelProperty(readOnly = true)
     protected String id;
-     @JsonIgnore
+    @JsonIgnore
     @OWLAnnotationProperty(iri = RDFS.LABEL)
     protected String name;
+    @JsonIgnore
     @OWLAnnotationProperty(iri = cz.cvut.kbss.jopa.vocabulary.DC.Elements.DESCRIPTION)
     protected String description;
     @Types

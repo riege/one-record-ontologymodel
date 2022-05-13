@@ -1,6 +1,8 @@
 
 package org.iata.cargo.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
@@ -17,6 +19,9 @@ import cz.cvut.kbss.jopa.model.annotations.Types;
 import cz.cvut.kbss.jopa.vocabulary.RDFS;
 import org.iata.cargo.Vocabulary;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 /**
  * Scheduled Legs class to be used to identify legs. Can be used with Booking Option Request as an indicator of preferred Routing or with Booking Option when a carrier proposes a specific Routing.
@@ -30,14 +35,20 @@ public class ScheduledLegs
 {
 
     @Id(generated = true)
+    @ApiModelProperty(readOnly = true)
     protected String id;
     @OWLAnnotationProperty(iri = RDFS.LABEL)
+    @JsonIgnore
     protected String name;
+    @JsonIgnore
     @OWLAnnotationProperty(iri = cz.cvut.kbss.jopa.vocabulary.DC.Elements.DESCRIPTION)
     protected String description;
     @Types
+    @JsonProperty("@type")
+    @ApiModelProperty(allowableValues = Vocabulary.s_c_ScheduledLegs)
     protected Set<String> types;
     @Properties
+    @JsonIgnore
     protected Map<String, Set<String>> properties;
     /**
      * Arrival location of the leg
@@ -48,6 +59,7 @@ public class ScheduledLegs
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, min = 1, max = -1),
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
+    @JsonProperty(Vocabulary.s_p_arrivalLocation_A)
     protected Location arrivalLocation;
     /**
      * Departure Location of the leg
@@ -58,18 +70,21 @@ public class ScheduledLegs
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1),
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, min = 1, max = -1)
     })
+    @JsonProperty(Vocabulary.s_p_departureLocation_A)
     protected Location departureLocation;
     /**
      * Arrival date and time of the leg
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_arrivalDate)
+    @JsonProperty(Vocabulary.s_p_arrivalDate)
     protected Set<Date> arrivalDate;
     /**
      * Departure date and time of the leg
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_departureDate)
+    @JsonProperty(Vocabulary.s_p_departureDate)
     protected Set<Date> departureDate;
     /**
      * Sequence number of the leg
@@ -80,12 +95,14 @@ public class ScheduledLegs
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#integer", max = 1),
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#integer", min = 1, max = -1)
     })
+    @JsonProperty(Vocabulary.s_p_sequenceNumber)
     protected Integer sequenceNumber;
     /**
      * Transport Id of the leg. E.g. Flight number, truck route identifier, etc.
      * 
      */
     @OWLDataProperty(iri = Vocabulary.s_p_transportId)
+    @JsonProperty(Vocabulary.s_p_transportId)
     protected Set<String> transportId;
 
     public void setId(String id) {

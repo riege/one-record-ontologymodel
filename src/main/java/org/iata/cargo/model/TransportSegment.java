@@ -53,6 +53,7 @@ public class TransportSegment
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
+    @JsonProperty(Vocabulary.s_p_co2CalculationMethod)
     protected CO2CalcMethod co2CalculationMethod;
     /**
      * Amount of CO2 emitted (e.g. 34 kg/km)
