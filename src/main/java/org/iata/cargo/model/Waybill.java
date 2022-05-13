@@ -54,6 +54,7 @@ public class Waybill
     @ParticipationConstraints({
         @ParticipationConstraint(owlObjectIRI = Vocabulary.s_c_Thing, max = 1)
     })
+    @JsonProperty(Vocabulary.s_p_bookingRef_A)
     protected Booking bookingRef;
     /**
      * Location of individual or company involved in the movement of a consignment or Coded representation of a specific airport/city code
@@ -189,7 +190,7 @@ public class Waybill
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", min = 1, max = -1),
         @ParticipationConstraint(owlObjectIRI = "http://www.w3.org/2001/XMLSchema#string", max = 1)
     })
-    @JsonProperty(Vocabulary.s_p_waybillNumber_A_A)
+    @JsonProperty(Vocabulary.s_p_waybillNumber_A_A_A)
     protected String waybillNumber;
     /**
      * Prefix used for the Waybill Number. Refer to IATA Airlines Codes
