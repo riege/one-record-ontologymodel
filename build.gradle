@@ -53,7 +53,7 @@ configurations.all {
 }
 
 dependencies {
-    api "com.fasterxml.jackson.core:jackson-annotations:2.11.4"
+    api "com.fasterxml.jackson.core:jackson-annotations:2.13.3"
     api "cz.cvut.kbss.jopa:jopa-api:0.16.5"
     api "net.sourceforge.owlapi:owlapi-api:5.1.17"
     api "org.apache.commons:commons-rdf-api:0.5.0"
