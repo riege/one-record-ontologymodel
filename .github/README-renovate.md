@@ -1,4 +1,4 @@
-# No dependabot.yml?
+# No Gradle Dependency Updates
 
 This repository contains **Java POJO classes for IATA ONE Record** (1R), as per
 official IATA Ontology on GitHub at https://github.com/IATA-Cargo/ONE-Record.
@@ -8,4 +8,4 @@ To ensure compatibility with
 the libraries used will not be used with their latest version but with the version which are used
 in that project. 
 
-This is the reason why this project does not and should not apply github's dependabot.yml feature.
+This is the reason why the "gradle" manager for Renovate has been disabled.
