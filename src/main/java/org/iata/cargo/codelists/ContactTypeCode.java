@@ -15,6 +15,7 @@ public enum ContactTypeCode {
     WEB("Website"),
     ALTERNATE_EMAIL("Alternate email address"),
     ALTERNATE_PHONE("Alternate phone number"),
+    OTHER("Other"),
     ;
 
     private final String code;
