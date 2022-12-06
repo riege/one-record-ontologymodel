@@ -1,6 +1,6 @@
 package org.iata.cargo.codelists;
 
-public enum BillingChargeCode {
+public enum BillingChargeCode implements CodedEnum {
     CASS_INVOICE_AMOUNT("NI"),
     CASS_NET_AMOUNT("CN"),
     CHARGE_SUMMARY_TOTAL("CT"),
@@ -23,4 +23,9 @@ public enum BillingChargeCode {
     public String code() {
         return code;
     }
+
+    public static BillingChargeCode getByCode(String code) {
+        return CodedEnum.getByCode(values(), code);
+    }
+
 }

@@ -1,6 +1,8 @@
 
 package org.iata.cargo.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
@@ -22,8 +24,8 @@ import cz.cvut.kbss.jopa.model.annotations.Properties;
 import cz.cvut.kbss.jopa.model.annotations.Types;
 import cz.cvut.kbss.jopa.vocabulary.DC;
 import cz.cvut.kbss.jopa.vocabulary.RDFS;
-import io.swagger.annotations.ApiModelProperty;
 
+import org.iata.cargo.codelists.RegulatedEntityCategoryCode;
 
 /**
  * Regulated Entity
@@ -167,6 +169,11 @@ public class RegulatedEntity
 
     public Date getExpiryDate() {
         return expiryDate;
+    }
+
+    public void setRegulatedEntityCategory(RegulatedEntityCategoryCode regulatedEntityCategory) {
+        this.regulatedEntityCategory = regulatedEntityCategory == null
+            ? null : regulatedEntityCategory.code();
     }
 
     public void setRegulatedEntityCategory(String regulatedEntityCategory) {
