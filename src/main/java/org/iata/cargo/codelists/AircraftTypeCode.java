@@ -21,8 +21,8 @@ public enum AircraftTypeCode implements CodedEnum {
     TYPE_141("141","B461","BAe 146-100 Pax", WTCCode.M),
     TYPE_142("142","B462","BAe 146-200 Pax", WTCCode.M),
     TYPE_143("143","B463","BAe 146-300 Pax", WTCCode.M),
-    TYPE_146("146","","BAe 146 all pax models", WTCCode.M),
-    TYPE_14F("14F","","BAe 146 Freighter (-100/200/300QT & QC)", WTCCode.M),
+    TYPE_146("146",null,"BAe 146 all pax models", WTCCode.M),
+    TYPE_14F("14F",null,"BAe 146 Freighter (-100/200/300QT & QC)", WTCCode.M),
     TYPE_14X("14X","B461","BAe 146 Freighter (-100QT & QC)", WTCCode.M),
     TYPE_14Y("14Y","B462","BAe 146 Freighter (-200QT & QC)", WTCCode.M),
     TYPE_14Z("14Z","B463","BAe 146 Freighter (-200QT & QC)", WTCCode.M),
@@ -50,7 +50,7 @@ public enum AircraftTypeCode implements CodedEnum {
     TYPE_330("330","A330","Airbus A330 all models", WTCCode.H),
     TYPE_332("332","A332","Airbus A330-200", WTCCode.H),
     TYPE_333("333","A333","Airbus A330-300", WTCCode.H),
-    TYPE_("","A337","Airbus A330-700 Beluga XL", WTCCode.H),
+    // has no IATA code: TYPE_(null,"A337","Airbus A330-700 Beluga XL", WTCCode.H),
     TYPE_338("338","A338","Airbus A330-800 Neo", WTCCode.H),
     TYPE_339("339","A339","Airbus A330-900 Neo", WTCCode.H),
     TYPE_33X("33X","A332","Airbus A330-200 Freighter", WTCCode.H),
@@ -62,7 +62,7 @@ public enum AircraftTypeCode implements CodedEnum {
     TYPE_351("351","A35K","Airbus A350-1000", WTCCode.H),
     TYPE_359("359","A359","Airbus A350-900", WTCCode.H),
     TYPE_380("380","A388","Airbus A380 pax", WTCCode.J),
-    TYPE_38F("38F","","Airbus A380 Freighter", WTCCode.J),
+    TYPE_38F("38F",null,"Airbus A380 Freighter", WTCCode.J),
     TYPE_703("703","B703","Boeing 707-300 pax", WTCCode.H),
     TYPE_707("707",null,"Boeing 707/720 all pax models", WTCCode.H),
     TYPE_70F("70F","B703","Boeing 707 Freighter", WTCCode.H),
@@ -213,7 +213,7 @@ public enum AircraftTypeCode implements CodedEnum {
     TYPE_BNT("BNT","TRIS","Pilatus Britten-Norman BN-2A Mk III Trislander", WTCCode.L),
     TYPE_BUS("BUS",null,"Bus",null),
     TYPE_C27("C27","AJ27","COMAC ARJ21", WTCCode.M),
-    // has no IATA code: TYPE_("","C919","COMAC C919", WTCCode.M),
+    // has no IATA code: TYPE_(null,"C919","COMAC C919", WTCCode.M),
     TYPE_CCJ("CCJ","CL60","Canadair Challenger", WTCCode.M),
     TYPE_CCX("CCX","GLEX","Canadair Global Express", WTCCode.M),
     TYPE_CD2("CD2","NOMA","Government Aircraft Factories N22B / N24A Nomad", WTCCode.L),
@@ -401,8 +401,8 @@ public enum AircraftTypeCode implements CodedEnum {
     TYPE_SHB("SHB","BELF","Shorts SC-5 Belfast", WTCCode.M),
     TYPE_SHS("SHS","SC7","Shorts SC-7 Skyvan", WTCCode.L),
     TYPE_SSC("SSC","CONC","Aerospatiale/BAC Concorde", WTCCode.H),
-    TYPE_SU1("SU1","","Sukhoi Superjet 100", WTCCode.M),
-    TYPE_SU7("SU7","","Sukhoi Superjet 100-75", WTCCode.M),
+    TYPE_SU1("SU1",null,"Sukhoi Superjet 100", WTCCode.M),
+    TYPE_SU7("SU7",null,"Sukhoi Superjet 100-75", WTCCode.M),
     TYPE_SU9("SU9","SU95","Sukhoi Superjet 100-95", WTCCode.M),
     TYPE_SWM("SWM",null,"Fairchild (Swearingen) SA26 / SA226 / SA227 Metro / Merlin / Expediter", WTCCode.L),
     TYPE_T20("T20","T204","Tupolev Tu-204 / Tu-214", WTCCode.M),
@@ -450,6 +450,22 @@ public enum AircraftTypeCode implements CodedEnum {
 
     public WTCCode getWakeTurbulenceCategory() {
         return wtc;
+    }
+
+    public boolean isRoadFeederService() {
+        return this == TYPE_RFS;
+    }
+
+    public boolean isTrain() {
+        return this == TYPE_TRN;
+    }
+
+    public boolean isBus() {
+        return this == TYPE_BUS;
+    }
+
+    public boolean isLimousine() {
+        return this == TYPE_LMO;
     }
 
     private enum WTCCode {
