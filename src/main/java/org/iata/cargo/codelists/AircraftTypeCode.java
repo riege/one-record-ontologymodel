@@ -3,17 +3,26 @@ package org.iata.cargo.codelists;
 /**
  * Aircraft Type Codes as per
  * https://www.avcodes.co.uk/acrtypes.asp
- *
+ * </p><p>
  * Other sources from the internet are e.g.
+ * <ul><li>
  *   https://en.wikipedia.org/wiki/List_of_aircraft_type_designators
+ * </li><li>
  *   https://de.wikipedia.org/wiki/Liste_der_Flugzeugtypencodes
+ * </li><li>
  *   http://www.flugzeuginfo.net/table_accodes_iata_en.php
+ * </li></ul>
  *
  * Fields:
+ * <ul><li>
  *   IATA Code
+ * </li><li>
  *   ICAO Code
+ * </li><li>
  *   Manufacturer and Aircraft Type / Model
+ * </li><li>
  *   Wake Turbulence Categories (WTC): L = Light, , M = Medium, H = Heavy, J = Super
+ * </li></ul>
  */
 public enum AircraftTypeCode implements CodedEnum {
 
@@ -301,16 +310,14 @@ public enum AircraftTypeCode implements CodedEnum {
     TYPE_E70("E70","E170","Embraer 170", WTCCode.M),
     TYPE_E90("E90","E190","Embraer 190", WTCCode.M),
     TYPE_EC3("EC3","EC30","Eurocopter EC.130",null),
-    // has no IATA code: TYPE_E70("E70","E170","Embraer 170", WTCCode.M),
     TYPE_E75("E75","E75S","Embraer 175 (Short wing)", WTCCode.M),
-    // has no IATA code: TYPE_E75("E75","E75L","Embraer 175 (Long Wing)", WTCCode.M),
-    // has no IATA code: TYPE_E90("E90","E190","Embraer 190", WTCCode.M),
+    // has no different IATA code: TYPE_E75("E75","E75L","Embraer 175 (Long Wing)", WTCCode.M),
     TYPE_E95("E95","E195","Embraer 195", WTCCode.M),
     TYPE_EM2("EM2","E120","Embraer EMB.120 Brasilia", WTCCode.L),
     TYPE_EMB("EMB","E110","Embraer EMB.110 Bandeirnate", WTCCode.M),
     TYPE_EMJ("EMJ",null,"Embraer 170/190", WTCCode.M),
     TYPE_ER3("ER3","E135","Embraer RJ135", WTCCode.M),
-    // has no IATA code: TYPE_ER3("ER3","E35L","Embraer Legacy 600 / Legacy 650", WTCCode.M),
+    // has no different IATA code: TYPE_ER3("ER3","E35L","Embraer Legacy 600 / Legacy 650", WTCCode.M),
     TYPE_ER4("ER4","E145","Embraer RJ145 Amazon", WTCCode.M),
     TYPE_ERD("ERD",null,"Embraer RJ140", WTCCode.M),
     TYPE_ERJ("ERJ",null,"Embraer RJ135 / RJ140 / RJ145", WTCCode.M),
